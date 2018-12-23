@@ -1,0 +1,36 @@
+Ops 0:0  s:1 eq:2 +:2 *:2 car:1 cdr:1 cons:2 compo:2 filter:2 N2:0 null:0 1+:0 fs:0 sieve:0 nth:2
+app:2 fcar:0 remult:1 fremult:0 if:3 true:0 false:0 map:2 mult:2 primes:0 
+Vars x y z x1 x2 l1 l2 l f
+TRS R
+; app
+app(fs,x) -> s(x)
+app(fcar,x) -> car(x)
+app(fremult,x) -> remult(x)
+; if
+if(true,x,y) -> x
+if(false,x,y) -> y
+; pairs
+car(cons(x,l)) -> x
+cdr(cons(x,l)) -> l
+; nth
+nth(0,cons(x,y)) -> x
+nth(s(x),cons(y,z)) -> nth(x,z)
+; addition
++(0,x) -> x
++(s(x),y) -> s(+(x,y))
+; product
+*(0,x) -> 0
+*(s(x),y) -> +(*(x,y),y)
+; increment
+N2 -> cons(s(s(0)),map(fs,N2))
+map(f,cons(x,l)) -> cons(app(f,x),map(f,l))
+mult(x,l) -> cons(*(x,car(l)),mult(x,cdr(l)))
+filter(cons(x1,l1),cons(x2,l2)) -> if(eq(x1,x2),filter(l1,l2),cons(x1,filter(l1,l2)))
+remult(cons(x,l)) -> filter(l,mult(x,l))
+sieve -> cons(N2,map(fremult,sieve))
+primes -> map(fcar,sieve)
+
+eq(0,0) -> true
+eq(0,s(x)) -> false
+eq(s(x),0) -> false
+eq(s(x),s(y)) -> eq(x,y)

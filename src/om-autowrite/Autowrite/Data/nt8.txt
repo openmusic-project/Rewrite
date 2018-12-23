@@ -1,0 +1,6 @@
+Ops a:0 f:3 g:1
+
+Vars x y z
+TRS R
+f(x,y,g(z)) -> f(g(a),z,y)
+f(g(x),y,z) -> f(x,z,g(a))

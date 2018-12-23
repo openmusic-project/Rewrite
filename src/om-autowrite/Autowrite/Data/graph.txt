@@ -1,0 +1,22 @@
+Ops v1:0 
+    v2:0
+    v3:0
+    v4:0
+    v5:0
+    1:0
+    2:0
+    leaf:2
+    oplus:2 ren_1_1:1 ren_1_2:1 ren_2_1:1 ren_2_2:1 add_1_1:2  add_1_2:2 add_2_1:2 add_2_2:2
+
+Automaton A
+States q0 q1 qf
+Final States qf
+Transitions
+a -> q1
+
+n0 -> q
+n1 -> q
+s(q) -> q
+f(q,q) -> qf
+
+Term add_1_2(oplus(ren_2_1(add_1_2(oplus(ren_2_1(add_1_2(oplus(ren_2_1(add_1_2(oplus(leaf(v1,1),leaf(v2,2)))),leaf(v3,2)))),leaf(v4,2)))),leaf(v5,2)))

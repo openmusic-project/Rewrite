@@ -1,0 +1,28 @@
+Ops a:0 f:2
+Vars x
+
+TRS S01
+f(a,x) -> x
+f(x,a) -> x
+
+Term f(f(a,a),f(a,a))
+
+; nv = strong Jacquemard 25-may-2004
+; aut-c 2 states 10 rules in 0.03s
+; aut-d 6 states 9 rules in 0.03s
+; not CBN-nv f(f(a,a),f(a,a)) in 2 iterations in 0.08s
+
+; growing Jacquemard 25-may-2004
+; aut-c 2 states 7 rules in 0.02s
+; aut-d 3 states 10 rules in 0.03
+; CBN-g in 3 iterations in 0.05
+
+; nv = strong Toyama 25-may-2004
+; aut-c 2 states 6 rules in 0.01s
+; aut-d 4 states 5 rules in 0.02s
+; not CBN-s f(f(a,a),f(a,a)) in 2 iterations
+
+; growing Toyama 25-may-2004
+; aut-c 2 states 6 rules in 0.03s
+; aut-d 3 states 10 rules in 0.02s
+; CBN-g in 3 iterations 0.06s

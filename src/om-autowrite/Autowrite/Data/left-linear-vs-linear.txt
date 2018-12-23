@@ -1,0 +1,11 @@
+Ops a:0 b:0 c:0 d:0 f:3 g:2 h:1 k:2
+Vars x y 
+
+TRS R
+h(g(x,y)) -> k(g(x,x),y)
+c -> d
+k(g(c,d),a) -> a
+k(g(d,c),b) -> b
+f(x,a,b) -> a
+f(b,x,a) -> a
+f(a,b,x) -> a

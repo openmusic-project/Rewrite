@@ -1,0 +1,476 @@
+\documentclass[11pt]{llncs}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{psfig, latexsym}
+\usepackage{epsfig}
+\usepackage{moreverb}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\RR}{\mathcal{R}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RRa}{{\RR_\alpha}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\NF}{\text{NF}}
+\newcommand{\ENF}{\text{ENF}}
+\newcommand{\CBN}{\text{CBN}}
+\newcommand{\CBNs}{\text{CBNs}}
+\newcommand{\WN}{\text{WN}}
+\def\autocom#1{\textsl{#1 }}
+\def\autocombf#1{{\bf \textsl{#1}}}
+\begin{document}
+\bibliographystyle{plain}
+\title{Autowrite: 
+%A tool for checking properties of term rewrite systems\\
+User's Guide\\
+\small{(Still being written)}}
+%\author{Ir\`ene Durand\inst{1}}
+\author{Ir\`ene Durand}
+\institute{
+Universit\'e de Bordeaux I \\
+33405 Talence, France \\
+\email{idurand@labri.fr}
+}
+\date{\today}
+\maketitle 
+\section{Introduction}
+Autowrite is a tool for handling term rewrite
+systems and tree automata. 
+It was originally designed to check membership to Call-by-need 
+($\CBN$) classes.
+For this purpose, it implements the tree automata constructions used in
+\cite{J96,DM97,DM98,NT02} and many useful
+operations on terms, rewrite systems and tree automata.
+Now all these automata constructions are accessible from the graphical
+interface which makes Autowrite also a tool for handling tree automata.
+
+The graphical interface (still under construction)
+is written using FreeCLIM, the free implementation
+of the CLIM specification. 
+New functionnalities could be easily integrated upon demand.
+
+The Autowrite tool was used to check membership to $\CBN_\alpha$ for most 
+of the examples presented in \cite{DM01} and \cite{id-am:ic-2005}.
+The latest version was presented in \cite{D04}.
+
+\section{Installation}
+The system has been compiled to run on a PC x86 under Linux.
+The graphical interface is an X11 client so requires an X11 server.
+
+The user should get the file Autowrite.tgz and install the system
+with the following commands.
+\begin{verbatim}
+tar xzvf Autowrite.tgz
+cd Autowrite
+./INSTALL
+\end{verbatim}
+The system is started by typing
+\begin{verbatim}
+./autowrite &
+\end{verbatim}
+Use the {\tt Quit} button to exit Autowrite.
+
+The directory {\tt Autowrite} contains a {\tt Data} directory were
+the specifications are stored. 
+
+\section{Specification Files}
+The user may specify a set of Autowrite objects (Trss, automata, termsets)
+related to a common signature and set of variable, in a specification file whose name 
+should have the extension \texttt{.txt}.
+
+An Autowrite specification file starts with the definition
+of a signature, eventually followed by the definition of a set of variables.
+Next we may have in any order definitions of TRSs, automata, termsets,
+each one of them associated with a distinct name.
+
+\pagebreak
+\noindent
+Example: \texttt{WRS.txt}
+\begin{verbatim}
+Ops 0:0  s:1 +:2 *:2
+Vars x y
+TRS R
+; addition
++(0,x) -> x
++(s(x),y) -> s(+(x,y))
+; product
+*(0,x) -> 0
+*(s(x),y) -> +(*(x,y),y)
+
+Automaton EVEN
+States odd even
+Final States even
+Transitions
+0 -> even
+s(even) -> odd
+s(odd) -> even
+
+Termset RS 0 s(x)
+Termset "T(F)" x
+
+Term *(*(0,s(0)),+(0,s(0)))
+Term *(o,+(0,s(0)))
+Term *(*(0,s(0)),o)
+Term s(s(s(0)))
+\end{verbatim}
+
+%\verbatimtabinput{WRS.txt}
+
+\subsection{Comments}
+Any part of a line located after the character \texttt{;} 
+is considered a comment and will be ignored.
+
+\subsection{Names}
+A name used for a symbol, a variable, a state, a trss or an automaton
+should not contain the following characters \texttt{;, :, (, ), ", -}
+unless the name is surrounded by \texttt{" "}.
+The names \texttt{o} and \texttt{@} are reserved (\texttt{o} represents
+the $\bullet$ symbol and \texttt{@} is the extra symbol used to extend
+a signature.
+
+\subsection{Symbols and signature}
+A \emph{symbol} has a \emph{name} and an \emph{arity}
+ separated by the character \texttt{:}.\\
+A \emph{signature} is introduced by the \texttt{Ops} keyword followed by
+a list of symbols.\\
+
+\subsection{Variables}
+The \emph{variables} are introduced by the \texttt{Vars} keyword followed by
+a list of variables names which should be disjoint from the
+symbol names.
+
+\subsection{Terms}
+A \emph{term} is introduced by the \texttt{Term} keyword followed by the term.
+Terms are represented in the usual infix notation and
+must be built upon the signature and the set of variables.
+
+\subsection{Trss}
+A \emph{trs} is introduced by the \texttt{TRS} keyword followed
+by the name of the TRS and by the list of rules.
+
+Each \emph{rule} has a left-handside and a right-handside separated
+by \verb+->+. Both the left-handside and the right-handside
+are terms.
+
+\subsection{Automata}
+An \emph{automaton} is introduced by the \texttt{Automaton} keyword followed
+by the name of the automaton. Follow in that order states,
+final states and transitions.\\
+%
+The \emph{states} are introduced by the \texttt{States} keyword followed
+by a list of the states names.\\
+%
+The \emph{final states} are introduced by the \texttt{Final States} keyword 
+followed by a list of the final states names.\\
+%
+The \emph{transitions} are introduced by the \texttt{Transitions} keyword 
+followed
+by a list of transitions.
+Each transition has a left-handside (a flat term with arguments
+being states) and a right-handside (a state) separated by \verb+->+.
+
+\subsection{Termsets}
+A \emph{termset} is introduced by the \texttt{Termset} keyword followed
+a list on terms (not necessarily ground).
+
+\section{Using Autowrite}
+
+\subsection{Generalities}
+The top pane of the Autowrite window is an interactor pane from which the user interacts with
+the system. It prompts the user for commands and arguments.
+
+At any time the user can get \textbf{help} about the current possibilities
+by clicking on the right-button.
+
+Commands are accessible either thru the command line using \textbf{completion} 
+(achieved with the \verb+<TAB>+ key
+or from the menus items. Some commands are also available from buttons.
+
+All commands accessible are accessible by typing
+the command name (written on the item) to the \autocom{Command} prompt.
+The latter is recommended as thru completion it will save the user a lot
+of typing. Completion works for commands, data filenames, automaton names,
+trs names, termset names.
+
+The menu are there to remind the user of every possible command or for people
+who don't like to type. In any case, at the moment, arguments of commands
+need to be typed in the interactor pane.
+
+The \textbf{Read} commands are used to read Autowrite objects into the current specificationc directly
+from the command line. 
+The \textbf{Load} commands are used to load Autowrite objects into the current specificationfrom a file.
+The \textbf{Save} commands are used to save Autowrite objects into a file.
+The \textbf{Retrieve} commands are used to set the current Autowrite object
+with an already computed object.
+
+\subsection{File Menu}
+From this menu, one can load a specification from a file or save the current
+specification to a file.
+
+\subsection{Trs Menu}
+This menu gathers all commands related to the current TRS or to the left-handsides
+of the current TRS.
+\subsubsection{Left-linearity}
+One can check left-linearity for the current TRS $\RR$ 
+by using the \autocom{Left-linearity} command.
+\subsubsection{Overlappingness}
+One can check overlappingness for the current TRS $\RR$
+by using the \autocom{Overlapping} command.
+\subsubsection{Orthogonality}
+One can check orthogonality for the current TRS $\RR$ 
+by using the \autocom{Orthogonality} command.
+\subsubsection{Normal and external normal forms}
+One can check whether the set of normal forms $\NF_\RR$ or the set of
+external normal forms $\ENF_\RR$ are empty using the \autocom{NF empty?}
+and \autocom{ENF empty?} commands.
+When the set is not empty, a term witnessing nonemptyness is shown.
+\subsubsection{Forward-branching}
+One can check whether a system is forward-branching~\cite{D94}
+by using either the cubic algorithm derived from the characterization of
+forward-branching system or the quadratic construction of a
+forward-branching index-tree.
+One can transform a forward-branching TRS to a constructor system in
+$\CBNs$ using the two algorithms presented in \cite{bs-ris:jsc-simulation}.
+
+\subsection{Approx Trs Menu}
+This menu gathers all commands related to the current approximation
+of the current TRS $\Sc = \RR_\alpha$. 
+
+\subsubsection{Changing the current approximation}
+With the \autocom{Approximation Strong} 
+\autocom{Approximation Nv} 
+\autocom{Approximation Linear Growing} 
+\autocom{Approximation Growing} 
+commands,
+one can select the current approximation $\alpha$ for the current TRS $\RR$.
+One may also use the \autocom{Approximation} item of the
+\autocom{Approx Trs} menu and select in the pop-up-menu the desired
+approximation.
+
+\subsubsection{Membership to $\CBN$}
+One can check membership to $\CBN_\alpha$ for the current TRS $\RR$ 
+and the current approximation $\alpha$ by using the \autocom{Call-by-need} 
+command.
+
+The answer is either ``the TRS is in $\CBN_\alpha$ or
+``the TRS is not in $\CBN_\alpha$; in the latter case an 
+``$\alpha$-free-term''
+\emph{i.e.} a term with no $\RR_\alpha$-needed redex is shown.
+
+The \autocom{Call-by-need\@} command checks membership to $\CBN_\alpha$ 
+but with the signature extended with a fresh constant symbol \autocom{\@}.
+Indeed a TRS may be in $\CBN_\alpha$ with the signature consiting of 
+all the symbols appearing in its rules but {\bf not} in $\CBN_\alpha$ with 
+the same signature extended by just one fresh symbol. The preservation of 
+membership thru ``signature extension''
+has been investigated in \cite{DM01}.
+
+Note that the membership to $\CBN_\alpha$ problem 
+having a double exponential time complexity,
+may run for a very long time for big TRS.\\
+Use the \autocom{Stop} button to stop the computation.
+
+\subsubsection{Preservation of the set of normalizable terms}
+As shown in \cite{DM01}, the sets of terms of $\TT(\FF)$ that are normalizable
+may be augmented if the signature $\FF$ is extended with just one fresh constant
+symbol (for instance \@).
+Using the command \autocom{WN(S,G,F) = WN(S,F)} one can check whether signature
+extension preserves the set of normalizable terms. If this is not the case,
+then a term witnessing that $\WN(\RR_\alpha,\GG,\FF) \not\subseteq \WN(\RR_\alpha,\FF)$ is shown.
+
+The same can be done with $\RR \cup \{ \bullet \to \bullet \}$ as for the growing
+approximation we may have 
+$\WN(\RR_\alpha,\GG,\FF) = \WN(\RR_\alpha,\FF)$ but $
+\WN_\bullet(\RR_\alpha,\GG,\FF) \not\subseteq \WN_\bullet(\RR_\alpha,\FF)$.\\
+Use the command \autocom{WNo(S,G,F) = WNo(S,F)} for that purpose.
+
+\subsubsection{Arbitraryness}
+The approximated TRS is \emph{arbitrary} if there exists a term $t \in \TT(\FF)$
+such that $t \to_{\RR_\alpha,\FF \cup \{ @ \}} @$.
+If the approximated TRS $\RR_\alpha$ is arbitrary a witness term $t$ is given.
+One can check whether the current approximated TRS $\RR_\alpha$ 
+is arbitrary by using the \autocom{Arbitrary} command of the \autocom{Approx-TRS}
+menu.
+
+\subsection{Term Menu}
+
+\subsubsection{Redex positions}
+With the \autocom{Redexes} command, one may get the redexes positions
+(according to the current TRS) of the current term.
+
+\subsubsection{Needed redex positions}
+With the \autocom{Needed redexes} command, one may get the needed-redexes 
+positions
+(according to the current approximation of the current TRS) of the current 
+term.
+
+\subsubsection{Normalizability}
+With the \autocom{Normalizability} command, one may check whether a term
+is normalizable with regard to the approximated TRS.\\
+To check whether a redex in a term is needed in a term (according
+to the current TRS and approximation), just enter the term where the
+redex has been replaced with the {\tt o} symbol and check whether
+it is normalizable.
+
+\subsubsection{Recognizability}
+With the \autocom{Recognizability} command of the \autocom{Term} menu, 
+one may check whether the current
+term is recognized by the current automaton.
+
+\subsection{Termset}
+A \emph{termset} is a set of (not necessarily ground) terms built upon
+the current signature and set of variables.
+
+\subsubsection{Accessibility}
+With the \autocom{Accessibility} command, one may check whether a termset
+is accessible from the current term with regard to the current
+approximation.\\
+To check accessibility to a single term, just enter a termset containing
+that term.
+
+\subsubsection{Termset automaton}
+With the \autocom{Termset automaton} command, 
+one may get obtain an automaton recognizing the termset.
+With the \autocom{Accessibility} command one may check whether
+the set of instances of the current termset is accessible from
+the current term using the current approximation.
+
+\subsection{Reduction and Needed Reduction}
+The \textbf{Reduction} menu contains choices for reducing
+the current term.
+\subsubsection{Classical reduction}
+One can perform a reduction step using either
+the leftmost-outermost strategy or parallel-outermost strategy.
+The ``Reduction to normal form'' command applies 
+the parallel-outermost strategy
+until a normal form is reached 
+Use the \autocom{Stop} button (or command) to stop a looping computation.
+
+\subsubsection{Needed reduction}
+One can perform a needed-reduction step
+using the leftmost-outermost needed redex.
+The ``Needed reduction to normal form'' command applies the needed strategy
+until a normal form is reached 
+(may loop if term does not have a normal form).\\
+Use the Stop button (or command) to stop a looping computation.
+
+\subsection{TRS Automata}
+The \autocom{TRS Automata} menu, gathers commands to compute
+automata related to
+the left-handsides of the current TRS or to its approximation.
+The \autocom{Redex automaton}, \autocom{Reducible automaton},
+\autocom{Nf automaton} compute the automata recognizing
+the sets of redexes, reducible terms, normal forms.
+
+We have the possibilities of computing Toyama's or Jacquemard's 
+$\CC_{\RRa,\LL}$ automaton recognizing $(\to_\RRa^*)[\LL]$
+with either \\
+\begin{itemize}
+\item $\LL = \NF$: command \autocom{Automaton C NF}, 
+\item $\LL = L(\A_A)$: command \autocom{Automaton C A}, 
+\item  $\LL = L(\A_{S})$: command \autocom{Automaton C S}, 
+$S$ being the instances of the current termset.
+\end{itemize}
+
+We can also compute the automaton $\DD(\RRa,\FF)$ which
+recognizes the set of reducible terms without $\RRa$-needed
+redex: command \autocom{Automaton D}.
+
+\subsection{Automata}
+From this menu one can build new automata from existing ones. 
+For instance
+compute the complement of the current automaton 
+(\autocom{Complement automaton}), complete the current automaton 
+(\autocom{Complete automaton}), compute the intersection (or the union)
+of the current automaton with an existing one (\autocom{Intersect automaton},
+\autocom{Union automaton}).
+
+\subsection{Automaton}
+The operations of this menu apply to the current automaton.
+Most of these operations check a property of the current automaton like:
+\begin{itemize}
+\item "is it deterministic?" (\autocom{Is Deterministic}),
+\item "is it complete?" (\autocom{Is Complete}),
+\item "is it minimal?" (\autocom{Is Minimal}),
+\item "is it simplified (minimal uncompleted)?" (\autocom{Is Simplified}),
+\item "does it recognize the empty language?" (\autocom{Empty automaton?}),
+\item "is it included into another automaton" (\autocom{Inclusion automaton}), 
+\item "is it equal (recognizes the same language) to another automaton" 
+(\autocom{Equality automaton}), 
+\item "is its intersection with another automaton empty"
+(\autocom{Intersection emptiness}).
+
+\end{itemize}
+
+\section{How to exit if Autowrite crashes}
+In that case, you should end up in the Lisp debugger. 
+Just type \autocom{(cl::quit)} to exit Lisp.
+
+%\section{Known bugs}
+
+\section{Example of a session}
+\noindent
+\autocom{Command:} \autocombf{Load Spec}\\
+\autocom{spec filename:} \autocombf{WRS.txt}\\
+\autocom{Command:} \autocombf{Nf Automaton}\\
+\autocom{Command:} \autocombf{Redex Automaton}\\
+\autocom{Command:} \autocombf{Reducible Automaton}\\
+\autocom{Command:} \autocombf{Complement Automaton}\\
+\autocom{Command:} \autocombf{Equality Automaton}\\
+\autocom{equality with automaton:} \autocombf{nf}\\
+\autocom{Command:} \autocom{Retrieve automaton}\\
+\autocom{automaton name:} \autocombf{redex}\\
+\autocom{Command:} \autocom{Inclusion automaton}\\
+\autocom{inclusion in automaton:} \autocombf{reducible}\\
+\autocom{Command:} \autocom{Empty intersection?}\\
+\autocom{emptyness of intersection with automaton:} \autocombf{nf}\\
+\autocom{Command:} \autocom{Intersection automaton}\\
+\autocom{Intersection with automaton:} \autocombf{nf}\\
+\autocom{Command:} \autocom{Empty automaton?}\\
+\autocom{Command:} \autocombf{Load Spec}\\
+\autocom{spec filename:} \autocombf{S04.txt}\\
+\autocom{Command:} \autocom{Call by need}\\
+\autocom{Command:} \autocom{Approximation Nv}\\
+\autocom{Command:} \autocom{Call by need}\\
+\autocom{Command:} \autocom{Call by need Extra}\\
+\autocom{Command:} \autocom{Redexes}\\
+\autocom{Command:} \autocom{Needed redexes}\\
+\autocom{Command:} \autocom{Automaton D}\\
+\autocom{Command:} \autocom{Recognized by automaton}\\
+\autocom{Command:} \autocom{Retrieve spec}\\
+\autocom{spec name:} \autocombf{WRS.txt}\\
+\autocom{Command:} \autocom{Termset automaton}\\
+\autocom{Command:} \autocom{Accessibility automaton}\\
+\autocom{Command:} \autocom{Needed reduction step}\\
+\autocom{Command:} \autocom{Needed reduction to nf}\\
+\autocom{Command:} \autocom{Retrieve term}\\
+\autocom{term:} \autocombf{ *(*(0,s(0)),+(0,s(0)))}\\
+\autocom{Command:} \autocom{Parallel outermost step}\\
+
+\section{Snapshots of a session}
+Figures~\ref{figure-sc1}, \ref{figure-sc2} and \ref{figure-sc3} at the
+end of the document show some snapshots of the graphical interface.
+\begin{figure}[ht]
+\psfig{figure=sc1.ps}
+\caption{Operations on the current term and the current automaton}
+\label{figure-sc1}
+\end{figure}
+\begin{figure}[ht]
+\psfig{figure=sc2.ps}
+\caption{Boolean operations on automata}
+\label{figure-sc2}
+\end{figure}
+\begin{figure}[ht]
+\psfig{figure=sc3.ps}
+\caption{Call by need queries}
+\label{figure-sc3}
+\end{figure}
+
+\bibliography{references}
+\end{document}

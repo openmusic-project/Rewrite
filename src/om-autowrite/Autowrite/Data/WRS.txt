@@ -1,0 +1,40 @@
+Ops 0:0  s:1 +:2 *:2
+Vars x y
+TRS R
+; addition
++(0,x) -> x
++(s(x),y) -> s(+(x,y))
+; product
+*(0,x) -> 0
+*(s(x),y) -> +(*(x,y),y)
+
+Automaton EVEN
+States odd even
+Final States even
+Transitions
+0 -> even
+s(even) -> odd
+s(odd) -> even
+
+Automaton RSA
+States qf qx
+Final States qf
+Transitions
+0 -> qf
+s(qf) -> qf
+0 -> qx
+s(qx) -> qf
+s(qx) -> qx
++(qx,qx) -> qx
+*(qx,qx) -> qx
+
+Termset RS 0 s(x)
+Termset "T(F)" x
+
+Term *(*(0,s(0)),+(0,s(0)))
+Term *(o,+(0,s(0)))
+Term *(*(0,s(0)),o)
+Term s(s(s(0)))
+
+TAutomaton TA
+Automata EVEN RSA

@@ -1,0 +1,127 @@
+Ops cons:2 a:0 b:0 nil:0 app:2 rev:1 
+
+Vars x y z 
+
+TRS current_TRS
+
+app(nil,x) -> x
+app(cons(x,y),z) -> cons(x,app(y,z))
+rev(nil) -> nil
+rev(cons(x,y)) -> app(rev(y),cons(x,nil))
+
+
+
+
+Automaton completed_A0
+
+States qlba:0 qla:0 qnil:0 qrev:0 qlab:0 qlb:0 qa:0 qb:0 
+
+Description
+qrev: "rev applied to lists where a are before b"
+qlab: "lists where a are before b (possibly empty)"
+qlb: "lists of b (poss. empty)"
+
+
+Final States qrev 
+
+Prior
+app(qla,qla) -> qla
+rev(qnil) -> qnil
+app(qnil,qla) -> qla
+app(qnil,qlb) -> qlb
+cons(qb,qnil) -> qlb
+app(qlb,qla) -> qlba
+rev(qlab) -> qlba
+cons(qa,qnil) -> qla
+nil -> qnil
+rev(qlb) -> qlb
+
+Transitions 
+rev(qlab) -> qrev
+nil -> qlab
+cons(qa,qlab) -> qlab
+cons(qa,qlb) -> qlab
+nil -> qlb
+cons(qb,qlb) -> qlb
+a -> qa
+b -> qb
+nil -> qrev
+rev(qlab) -> qlba
+app(qlba,qla) -> qrev
+rev(qlb) -> qlb
+nil -> qnil
+cons(qa,qnil) -> qla
+app(qlb,qla) -> qrev
+cons(qa,qnil) -> qrev
+cons(qb,qlba) -> qrev
+nil -> qlba
+app(qlba,qla) -> qlba
+app(qlb,qla) -> qlba
+cons(qb,qnil) -> qlb
+app(qnil,qlb) -> qlb
+app(qnil,qla) -> qla
+rev(qnil) -> qnil
+app(qla,qla) -> qla
+app(qlb,qlb) -> qlb
+cons(qa,qnil) -> qlba
+app(qnil,qla) -> qlba
+app(qla,qla) -> qlba
+cons(qb,qlba) -> qlba
+cons(qb,qla) -> qlba
+cons(qa,qla) -> qla
+app(qnil,qla) -> qrev
+app(qla,qla) -> qrev
+cons(qb,qla) -> qrev
+cons(qa,qla) -> qlba
+cons(qa,qla) -> qrev
+
+
+Automaton initial_A0
+
+States qrev:0 qlab:0 qlb:0 qa:0 qb:0 
+
+Description
+qrev: "rev applied to lists where a are before b"
+qlab: "lists where a are before b (possibly empty)"
+qlb: "lists of b (poss. empty)"
+
+
+Final States qrev 
+
+Transitions 
+rev(qlab) -> qrev
+nil -> qlab
+cons(qa,qlab) -> qlab
+cons(qa,qlb) -> qlab
+nil -> qlb
+cons(qb,qlb) -> qlb
+a -> qa
+b -> qb
+
+
+Automaton Problem1
+
+States qa:0 qb:0 qany:0 qlb:0 qlab:0 qnil:0 
+
+Description
+qany: "Any flat list made of a and b"
+qlb: "Any flat list made of a and b, beginning with a b"
+qlab: "Any flat list with at least an a followed by a b"
+
+
+Final States qlab 
+
+Transitions 
+a -> qa
+b -> qb
+cons(qa,qany) -> qany
+cons(qb,qany) -> qany
+nil -> qany
+cons(qb,qany) -> qlb
+cons(qa,qlb) -> qlab
+cons(qb,qlab) -> qlab
+cons(qa,qlab) -> qlab
+
+
+
+

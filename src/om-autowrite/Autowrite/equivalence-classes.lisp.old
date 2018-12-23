@@ -1,0 +1,146 @@
+(in-package :nautowrite)
+
+(defgeneric possibly-equivalent-to-state (afa q classes qp asign dtransitions)
+  (:documentation
+   "true if state Q is equivalent to state QP for every symbol if SIGN and tuples in AFA"))
+
+(defgeneric possibly-equivalent-to-class (afa q class classes asign dtransitions)
+  (:documentation
+   "true if state Q is equivalent every state in CLASS for every symbol in SIGN and tuples in AFA"))
+
+(defgeneric equivalence-classes-automaton (automaton)
+  (:documentation "builds the equivalences classes of states of AUTOMATON"))
+
+(defun in-the-same-class (q1 q2 classes)
+  (or
+   (eq q1 q2)
+   (and
+    q1 ;; permet de gerer le cas ou l automate est incomplet
+    q2
+    (let ((i1 (state-number q1))
+	  (i2 (state-number q2)))
+      (some
+       (lambda (class)
+	 (and (= (aref class i1) (aref class i2) 1)))
+       classes)))))
+
+(defmethod possibly-equivalent-for-symbols-with-same-arity
+    ((symbols list) arity (afai list) (q integer) (classes list) (qp integer) dtable)
+  (dotimes (i arity t)
+    (dolist (tuple afai)
+      (when (eq (nth i tuple) (aref *states-vector* q))
+	(let ((ntuple (copy-list tuple)))
+ 	  (setf (nth i ntuple) (aref *states-vector* qp))
+	  (mapc (lambda (sym)
+		  (let ((s1 (access-transitions-table-mod sym tuple dtable))
+			(s2 (access-transitions-table-mod sym ntuple dtable)))
+		    (unless (in-the-same-class s1 s2 classes)
+		      (return-from possibly-equivalent-for-symbols-with-same-arity nil))))
+		symbols))))))
+
+(defmethod possibly-equivalent-to-state
+    ((afa vector) (q integer) (classes list)
+     (qp integer) (asign vector) dtable)
+;;  (format *trace-output* "q~A possibliy-equivalent-to-state q~A ~%" q qp)
+  (loop
+     for arity from 0 below (length asign)
+       unless (possibly-equivalent-for-symbols-with-same-arity
+	       (aref asign arity)
+	       arity
+ 	       (aref afa arity) q classes qp dtable)
+       do (return nil)
+       finally (return t)))
+  
+(defmethod possibly-equivalent-to-class
+    ;; q index of state in states-vector
+    ((afa vector) (q integer) (newclass bit-vector)
+     (classes list)
+     (asign vector) dtable)
+  (loop
+     for qp from 0 below *states-vector-len*
+     unless (zerop (aref newclass qp))
+     do (unless (possibly-equivalent-to-state afa q classes qp asign dtable)
+	  (return-from possibly-equivalent-to-class))
+       finally (return t)))
+
+(defgeneric partition-class (afa class classes asign dtable)
+  (:documentation ""))
+
+(defmethod partition-class
+    ((afa vector) (class bit-vector) (classes list) (asign vector) dtable)
+;;  (format *trace-output* "partition-class ~A ~A: ~% " class classes)
+  (loop
+     with partition = nil
+     for q from 0 below *states-vector-len*
+     unless (zerop (aref class q))
+     do (let ((ncl (find-if
+		    (lambda (newclass)
+		      (possibly-equivalent-to-class
+		       afa q newclass classes asign dtable))
+		    partition)))
+	  (if ncl
+	      (setf (aref ncl q) 1)
+	      (let ((bv (make-empty-bv)))
+		(setf (aref bv q) 1)
+		(push bv partition)))
+;;	  (format *error-output* "q~A partition ~A ~%" q partition)
+	  )
+     finally (return partition)))
+
+;;;; il faut enlever des classes celle qu'on traite et mettre a la place les newclasses qui lui correspondent
+(defgeneric refine-partition (afa classes signature dtable)
+  (:documentation "replace each class by its refined set of classes"))
+
+(defmethod refine-partition ((afa vector) (classes list) (asign vector) dtable)
+  (loop
+     for class in classes
+     with newclasses = (copy-list classes)
+     unless (singleton-bv-p class)
+     do
+       (setf newclasses 
+	     (nconc
+	      (partition-class afa class newclasses asign dtable)
+	      (delete class newclasses :test #'eq :count 1)
+	      ))
+     finally (return newclasses)))
+
+(defmethod compute-equivalence-classes ((afa vector) (finalstates bit-vector) (nonfinalstates bit-vector) (asign vector) dtable)
+  (do* ((partition (if (empty-bv-p nonfinalstates)
+		       (list finalstates)
+		       (list finalstates nonfinalstates))
+		   newpartition)
+	(newpartition (refine-partition afa partition asign dtable)
+		      (refine-partition afa partition asign dtable)))
+       ((= (length newpartition) (length partition)) (mapcar #'bv-to-container partition))))
+
+(defmethod equivalence-classes-automaton ((automaton automaton))
+  (assert (and (reduced-p automaton)
+	       (deterministic-p automaton)
+;;	       (complete-p automaton)
+	       ))
+;;  (unless (complete-p automaton)
+;;    (format *error-output* "equivalence classes of uncomplete automaton~%"))
+  (let* ((finalstates (make-container (get-finalstates automaton)))
+	(nonfinalstates (container-difference (make-container (get-states automaton)) finalstates)))
+    (unless (contents finalstates)
+      (return-from equivalence-classes-automaton (list nonfinalstates)))
+    (when (and (complete-p automaton) (not (contents nonfinalstates)))
+      (return-from equivalence-classes-automaton (list finalstates)))
+    (let ((numbered (states-numbered-p automaton)))
+      (unless numbered (number-states automaton))
+      (with-states-vector (get-states automaton)
+	(let*
+	    ((finalstates
+	      (states-to-bv (get-finalstates automaton))) ;; warning can be empty not anymore
+	     (nonfinalstates
+	      (bit-andc2 (make-full-bv) finalstates))
+	     (sign (signature automaton))
+	     (asign (arrange-signature sign))
+	     (afa (arrange-for-arities
+		   (get-states automaton)
+		   (max-arity sign)))
+	     (dtable (transitions-table (get-transitions automaton)))
+	     (equivalence-classes
+	      (compute-equivalence-classes afa finalstates nonfinalstates asign dtable)))
+	  (unless numbered (name-states automaton))
+	  equivalence-classes)))))

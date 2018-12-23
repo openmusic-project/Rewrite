@@ -1,0 +1,37 @@
+;;; Klop and Middeldorp's Example p193
+Ops a:0 b:0 c1:0 c2:0 d1:0 d2:0 e:0 f:2 g:2
+Vars x
+TRS KMp193
+f(g(a,x),f(a,a)) -> a
+f(g(x,a),f(b,b)) -> a
+f(c1,f(d1,g(a,x))) -> a
+f(c2,f(d2,g(x,a))) -> a
+g(e,e) -> a
+
+Term f(g(g(e,e),g(e,e)),f(g(g(e,e),g(e,e)),g(g(e,e),g(e,e))))
+
+; strong Toyama 20-mar-2004
+; aut-c 30 states 1808 rules
+; aut-d 61 states 3535 rules
+; 4 iterations
+; f(g(g(e,e),g(e,e)),f(g(g(e,e),g(e,e)),g(g(e,e),g(e,e))))
+; G in 3m9s
+
+; growing = nv Toyama 20-mar-2004
+; aut-c 20 states 808 rules
+; aut-d 53 states 5625 rules
+; CBN-g in 6 iterations
+; G in 1m30s
+
+;; Jacquemard
+; strong 20-mar-2004
+; aut-c 22 states 576 rules
+; aut-d states rules
+; Process inferior-lisp exited abnormally with code 1
+
+;; Jacquemard
+; g = nv 20-oct-2003
+; aut-c 22 states 476 rules
+; aut-d 99 states 4780 rules
+; CBN-g in 6 iterations
+; in 6m48s

@@ -1,0 +1,7 @@
+Ops a:0 b:0 f:1
+Vars x y
+TRS R1
+x -> a
+f(x) -> b
+
+

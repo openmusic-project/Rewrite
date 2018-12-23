@@ -1,0 +1,28 @@
+Ops a:0 b:0 f:2
+TRS TGES
+f(a,b) -> a
+
+Automaton AGES
+States q1 q2 q3 q4
+Final States q3 
+Transitions
+a -> q1
+b -> q2
+f(q1,q2) -> q3
+f(q1,q1) -> q4
+f(q2,q2) -> q4
+f(q2,q1) -> q4
+f(q3,q1) -> q3
+f(q3,q2) -> q3
+f(q3,q3) -> q3
+f(q3,q4) -> q3
+f(q1,q3) -> q3
+f(q2,q3) -> q3
+f(q3,q3) -> q3
+f(q4,q3) -> q3
+f(q4,q1) -> q4
+f(q4,q2) -> q4
+f(q4,q4) -> q4
+f(q3,q4) -> q3
+f(q1,q4) -> q4
+f(q2,q4) -> q4

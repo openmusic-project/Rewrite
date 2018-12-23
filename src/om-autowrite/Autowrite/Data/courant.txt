@@ -1,0 +1,9 @@
+Ops a:0 b:0 f:3
+Vars x
+
+TRS S10
+f(x,a,b) -> a
+f(f(a,f(b,x,a),b),a,a) -> a
+f(f(x,a,b),a,a) -> a
+f(b,f(a,b,x),b) -> a
+

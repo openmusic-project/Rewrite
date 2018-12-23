@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo $0 $1 >> /tmp/trace-my-dot
+
+dot -Tpdf /tmp/$1.dot > /tmp/$1.pdf
+#xpdf $1.pdf

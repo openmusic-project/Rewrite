@@ -1,0 +1,9 @@
+Ops a:0 b:1 f:3 h1:2 h2:2 h3:3
+
+Vars x y z
+TRS R
+f(x,y,b(a)) -> h1(y,x)
+h1(b(y),x) -> h2(y,x)
+h2(y,b(x)) -> h3(y,x,b(b(a)))
+h3(y,x,b(z)) -> f(z,x,b(a))
+

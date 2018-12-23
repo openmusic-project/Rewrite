@@ -1,0 +1,17 @@
+Ops 
+  a:0
+  b:0
+  oplus:2 
+  ren_1_1:1  
+  ren_1_2:1 
+  ren_2_1:1 
+  ren_2_2:1 
+  add_1_1:1  
+  add_1_2:1 
+  add_2_1:1 
+  add_2_2:1
+
+Automaton Singleton1
+States q0 q1
+Final States q1
+Transitions

@@ -1,0 +1,58 @@
+\begin{thebibliography}{1}
+
+\bibitem{D94}
+I.~Durand.
+\newblock Bounded, strongly sequential and forward-branching term rewriting
+  systems.
+\newblock {\em Journal of Symbolic Computation}, 18:319--352, 1994.
+
+\bibitem{D04}
+I.~Durand.
+\newblock Autowrite: A tool for term rewrite systems and tree automata.
+\newblock In {\em Workshop on Rewriting Strategies}, Electronics Notes in
+  Theorical Computer Science, Aachen, June 2004.
+\newblock To appear in ENTCS.
+
+\bibitem{DM97}
+I.~Durand and A.~Middeldorp.
+\newblock Decidable call by need computations in term rewriting (extended
+  abstract).
+\newblock In {\em Proceedings of the 14th International Conference on Automated
+  Deduction}, volume 1249 of {\em Lecture Notes in Artificial Intelligence},
+  pages 4--18, 1997.
+
+\bibitem{DM98}
+I.~Durand and A.~Middeldorp.
+\newblock On the complexity of deciding call-by-need.
+\newblock Technical Report 1194-98, LaBRI, Universit\'e de Bordeaux I, 1998.
+
+\bibitem{DM01}
+I.~Durand and A.~Middeldorp.
+\newblock On the modularity of deciding call-by-need.
+\newblock In {\em Proceedings of the Internation Conference on Foundations of
+  Software Science and Computation Structures}, volume 2030 of {\em Lecture
+  Notes in Computer Science}, pages 199--213, 2001.
+
+\bibitem{id-am:ic-2005}
+I.~Durand and Aart Middeldorp.
+\newblock Decidable call-by-need computations in term rewriting.
+\newblock {\em Information and Computation}, 196:95--126, 2005.
+
+\bibitem{J96}
+F.~Jacquemard.
+\newblock Decidable approximations of term rewriting systems.
+\newblock In {\em Proceedings of the 7th International Conference on Rewriting
+  Techniques and Applications}, volume 1103 of {\em Lecture Notes in Computer
+  Science}, pages 362--376, 1996.
+
+\bibitem{NT02}
+T.~Nagaya and Y.~Toyama.
+\newblock Decidability for left-linear growing term rewriting systems.
+\newblock {\em Information and Computation}, 178(2):499--514, 2002.
+
+\bibitem{bs-ris:jsc-simulation}
+B.~Salinier and R.~Strandh.
+\newblock Efficient simulation of forward-branching systems.
+\newblock {\em Journal of Symbolic Computation}, 1996.
+
+\end{thebibliography}

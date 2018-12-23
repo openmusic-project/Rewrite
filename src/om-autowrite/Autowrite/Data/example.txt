@@ -1,0 +1,47 @@
+;(* This is a specification file to be used with the Timbuk tutorial *)
+
+Ops cons:2 a:0 b:0 nil:0 app:2
+
+Vars x y z 
+
+TRS R
+        app(nil, x) -> x
+        app(cons(x, y), z) -> cons(x, app(y, z))
+
+
+Automaton A0
+States qa qb qla qlb qf
+Description
+        qla : "Flat lists of a"
+        qlb : "Flat lists of b"
+Final States qf
+Transitions
+        a -> qa
+        b -> qb
+        cons(qa, qla) -> qla
+        nil -> qla
+        cons(qb, qlb) -> qlb
+        nil -> qlb
+        app(qla,qlb) -> qf
+
+Termset Problem1 
+    cons(b, cons(a, nil))
+    cons(a, cons(b, cons(a, nil)))
+
+Automaton Problem2
+States qa qb qany qla qlba qnil
+Description
+        qany: "Any flat list made of a and b"
+        qla : "Any flat list made of a and b, beginning with an a"
+        qlba: "Any flat list with at least a b followed by an a"
+Final States qlba
+Transitions
+        a -> qa
+        b -> qb
+        cons(qa, qany) -> qany
+        cons(qb, qany) -> qany
+        nil -> qany
+        cons(qa, qany) -> qla
+        cons(qb, qla) -> qlba
+        cons(qb, qlba) -> qlba
+        cons(qa, qlba) -> qlba

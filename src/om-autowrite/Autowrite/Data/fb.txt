@@ -1,0 +1,6 @@
+Ops a:0 b:0 f:2 g:2
+Vars x
+TRS FB
+f(g(x,a),a) -> x
+f(g(x,a),b) -> x
+g(b,b) -> b

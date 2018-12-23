@@ -1,0 +1,19 @@
+Ops 0:0 s:1 +:2 *:2 c:2 nth:2 fib:0 f:2
+Vars x y z
+
+TRS fib
+; addition
++(0,x) -> x
++(s(x),y) -> s(+(x,y))
+; product
+*(0,x) -> 0
+*(s(x),y) -> +(*(x,y),y)
+; nth
+nth(0,c(x,y)) -> x
+nth(s(x),c(y,z)) -> nth(x,z)
+; fib
+fib -> f(s(0),s(0))
+f(x,y) -> c(x,f(y,+(x,y)))
+
+Term nth(s(s(s(s(s(0))))),fib)
+

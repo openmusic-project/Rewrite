@@ -1,0 +1,43 @@
+; Extension of Berry's example
+Ops a:0 b:0 f:3 g:2 h:1 k:1
+Vars x
+TRS R3
+f(x, a, b) -> h(x)
+f(b, x, a) -> h(x)
+f(a, b, x) -> h(x)
+h(k(x)) -> g(x,x)
+g(a,a) -> g(a,a)
+g(a,b) -> a
+g(b,a) -> b
+
+Term f(g(b,a),g(b,a),g(b,a))
+Term f(a,g(b,a),g(b,a))
+
+; nv jacquemard 14-juin-2004
+; aut-c 4 states 72 rules 1.76s
+; aut-d 27 states 143 rules in 2.57s
+; f(f(a,a,b),f(a,a,b),f(a,a,b)) in 2 iterations in 4.34s
+
+; growing Jacquemard 25-may-2005
+; aut-c 4 states 36 rules in 0.25s
+; aut-d 9 states 731 rules in 0.59s
+;  CBN-g in 3 iterations in 0.84
+
+; strong toyama 14-nov-2004
+; aut-c 7 states 409 rules ST in 13.08s
+; aut-d 11 states 162 rules ST in 0.03s
+; not in CBN-s f(f(a,a,b),f(a,a,b),f(a,a,b))
+
+; nv toyama 14-nov-2004
+; aut-c 9 states 832 rules ST in 49.66s
+; aut-d 20 states 594 rules ST in 0.09s
+; not in CBN-nv f(f(a,a,b),f(a,a,b),f(a,a,b))
+
+; growing toyama 14-nov-2004
+; aut-c 6 states 267 rules ST in 4.15s
+; aut-d 17 states 5238 rules ST in 0.72
+; CBN-g in 3 iterations 1.22s
+
+
+
+

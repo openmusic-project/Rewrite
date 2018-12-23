@@ -1,0 +1,13 @@
+Ops a:0 f:3
+Vars x
+TRS PI3
+f(a,f(x,a,f(a,a,a)),a) -> a
+f(a,a,f(f(a,a,a),x,a)) -> a
+f(f(a,f(a,a,a),x),a,a) -> a
+
+
+; not in FB witnesses by f(?,?,?)
+; CBNs in 29m 14s 2004-10-29
+; aut-c-toyama 17 states 4915 rules
+; aut-d-det 50 states 125001 rules
+

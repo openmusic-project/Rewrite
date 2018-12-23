@@ -1,0 +1,5 @@
+Ops a:0 f:2
+Vars x
+TRS PI2
+f(a,f(x,a)) -> a
+f(f(a,x),a) -> a

@@ -1,0 +1,8 @@
+Ops a:0 b:0 c:0 f:2
+Vars x
+TRS R
+a -> b
+c -> c
+f(x,b) -> b
+Term f(c,a)
+

@@ -1,0 +1,251 @@
+Ops 
+  a00:0 b00:0 c00:0
+  a01:0 b01:0 c01:0
+  a10:0 b10:0 c10:0
+  a11:0 b11:0 c11:0
+  x10:1 x01:1
+  ren_a_b:1 ren_a_c:1 ren_b_a:1 ren_b_c:1 ren_c_a:1 ren_c_b:1 
+  add_a_b:1 add_a_c:1 add_b_c:1 
+  oplus:2 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Automaton Singleton-X1
+States q0 q1
+Final States q1
+Transitions
+a00 -> q0 b00 -> q0 c00 -> q0
+a01 -> q0 b01 -> q0 c01 -> q0
+a10 -> q1 b10 -> q1 c10 -> q1
+
+oplus(q0,q0) -> q0 
+oplus(q0,q1) -> q1 oplus(q1,q0) -> q1 
+ren_a_b(q0) -> q0 ren_a_c(q0) -> q0 ren_b_a(q0) -> q0 
+ren_b_c(q0) -> q0 ren_c_a(q0) -> q0 ren_c_b(q0) -> q0
+ren_a_b(q1) -> q1 ren_a_c(q1) -> q1 ren_b_a(q1) -> q1 
+ren_b_c(q1) -> q1 ren_c_a(q1) -> q1 ren_c_b(q1) -> q1
+add_a_b(q0) -> q0 add_a_c(q0) -> q0 add_b_c(q0) -> q0
+add_a_b(q1) -> q1 add_a_c(q1) -> q1 add_b_c(q1) -> q1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Automaton Edge-X1-X2-Singletons
+States q0 q1 
+       q1a q2a q1b q2b q1c q2c ;; e dans Xi
+       qab qac qbc ;; un de chaque cote
+
+Final States q1
+Transitions
+a00 -> q0 b00 -> q0 c00 -> q0
+a10 -> q1a 
+a01 -> q2a 
+b10 -> q1b 
+b01 -> q2b 
+c10 -> q1c 
+c01 -> q2c 
+
+add_a_b(q0) -> q0 add_a_c(q0) -> q0 add_b_c(q0) -> q0
+add_a_b(q1) -> q1 add_a_c(q1) -> q1 add_b_c(q1) -> q1
+add_a_b(q1a) -> q1a add_a_c(q1a) -> q1a add_b_c(q1a) -> q1a
+add_a_b(q2a) -> q2a add_a_c(q2a) -> q2a add_b_c(q2a) -> q2a
+add_a_b(q1b) -> q1b add_a_c(q1b) -> q1b add_b_c(q1b) -> q1b
+add_a_b(q2b) -> q2b add_a_c(q2b) -> q2b add_b_c(q2b) -> q2b
+add_a_b(q1c) -> q1c add_a_c(q1c) -> q1c add_b_c(q1c) -> q1c
+add_a_b(q2c) -> q2c add_a_c(q2c) -> q2c add_b_c(q2c) -> q2c
+
+add_a_b(qab) -> q1
+add_a_b(qac) -> qac 
+add_a_b(qbc) -> qbc 
+add_a_c(qab) -> qab 
+add_a_c(qac) -> q1
+add_a_c(qbc) -> qbc 
+add_b_c(qab) -> qab 
+add_b_c(qac) -> qac 
+add_b_c(qbc) -> q1
+
+ren_a_b(q0) -> q0 ren_a_c(q0) -> q0 ren_b_a(q0) -> q0 
+ren_b_c(q0) -> q0 ren_c_a(q0) -> q0 ren_c_b(q0) -> q0
+ren_a_b(q1) -> q1 ren_a_c(q1) -> q1 ren_b_a(q1) -> q1 
+ren_b_c(q1) -> q1 ren_c_a(q1) -> q1 ren_c_b(q1) -> q1
+
+
+oplus(q0,q0)  -> q0 oplus(q0,q1)  -> q1  oplus(q1,q0)  -> q1 oplus(q1,q1) -> q1
+oplus(q1,q1a) -> q1 oplus(q1,q2a) -> q1
+oplus(q1,q1b) -> q1 oplus(q1,q2b) -> q1
+oplus(q1,q1c) -> q1 oplus(q1,q2c) -> q1
+oplus(q1,qab) -> q1 oplus(q1,qac) -> q1 oplus(q1,qbc) -> q1
+
+oplus(q1a,q1) -> q1 oplus(q2a,q1) -> q1
+oplus(q1b,q1) -> q1 oplus(q2b,q1) -> q1
+oplus(q1c,q1) -> q1 oplus(q2c,q1) -> q1
+oplus(qab,q1) -> q1 oplus(qac,q1) -> q1 oplus(qbc,q1) -> q1
+
+
+oplus(q1a,q0) -> q1a oplus(q0,q1a) -> q1a oplus(q2a,q0) -> q2a oplus(q0,q2a) -> q2a
+oplus(q1b,q0) -> q1b oplus(q0,q1b) -> q1b oplus(q2b,q0) -> q2b oplus(q0,q2b) -> q2b
+oplus(q1c,q0) -> q1c oplus(q0,q1c) -> q1c oplus(q2c,q0) -> q2c oplus(q0,q2c) -> q2c
+
+oplus(qab,q0) -> qab oplus(qac,q0) -> qac oplus(qbc,q0) -> qbc 
+oplus(q0,qab) -> qab oplus(q0,qac) -> qac oplus(q0,qbc) -> qbc
+
+oplus(q1a,q2b) -> qab oplus(q2b,q1a) -> qab 
+oplus(q2a,q1b) -> qab oplus(q1b,q2a) -> qab
+oplus(q1a,q2c) -> qac oplus(q2c,q1a) -> qac 
+oplus(q2a,q1c) -> qac oplus(q1c,q2a) -> qac
+oplus(q1b,q2c) -> qbc oplus(q2c,q1b) -> qbc 
+oplus(q2b,q1c) -> qbc oplus(q1c,q2b) -> qbc
+
+ren_a_b(q1a) -> q1b ren_a_b(q2a) -> q2b 
+ren_a_b(q1b) -> q1b ren_a_b(q2b) -> q2b 
+ren_a_b(q1c) -> q1c ren_a_b(q2c) -> q2c 
+ren_a_c(q1a) -> q1c ren_a_c(q2a) -> q2c 
+ren_a_c(q1b) -> q1b ren_a_c(q2b) -> q2b
+ren_a_c(q1c) -> q1c ren_a_c(q2c) -> q2c
+ren_b_c(q1a) -> q1a ren_b_c(q2a) -> q2a
+ren_b_c(q1b) -> q1c ren_b_c(q2b) -> q2c 
+ren_b_c(q1c) -> q1c ren_b_c(q2c) -> q2c 
+
+ren_b_a(q1a) -> q1a ren_b_a(q2a) -> q2a 
+ren_b_a(q1b) -> q1a ren_b_a(q2b) -> q2a 
+ren_b_a(q1c) -> q1c ren_b_a(q2c) -> q2c 
+ren_c_a(q1a) -> q1a ren_c_a(q2a) -> q2a 
+ren_c_a(q1b) -> q1b ren_c_a(q2b) -> q2b
+ren_c_a(q1c) -> q1a ren_c_a(q2c) -> q2a
+ren_c_b(q1a) -> q1a ren_c_b(q2a) -> q2a
+ren_c_b(q1b) -> q1b ren_c_b(q2b) -> q2b 
+ren_c_b(q1c) -> q1b ren_c_b(q2c) -> q2b
+
+ren_a_b(qac) -> qbc 
+ren_a_c(qab) -> qbc 
+ren_b_a(qbc) -> qac
+ren_b_c(qab) -> qac 
+ren_c_a(qbc) -> qab 
+ren_c_b(qac) -> qab
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Automaton Member-a-X1
+States 
+q0 q1a q1b q1c
+Final States q1a
+Transitions
+a00 -> q0 
+a01 -> q0
+a10 -> q0
+b00 -> q0 
+b01 -> q0
+b10 -> q0
+c00 -> q0
+c01 -> q0
+c10 -> q0
+a10 -> q1a
+b10 -> q1b
+c10 -> q1c
+add_a_b(q0) -> q0 
+add_a_c(q0) -> q0 
+add_b_c(q0) -> q0
+add_a_b(q1a) -> q1a 
+add_a_c(q1a) -> q1a 
+add_b_c(q1a) -> q1a
+add_a_b(q1b) -> q1b 
+add_a_c(q1b) -> q1b 
+add_b_c(q1b) -> q1b
+add_a_b(q1c) -> q1c 
+add_a_c(q1c) -> q1c 
+add_b_c(q1c) -> q1c
+
+ren_a_b(q0) -> q0 
+ren_a_c(q0) -> q0 
+ren_b_c(q0) -> q0 
+ren_b_a(q0) -> q0 
+ren_c_a(q0) -> q0 
+ren_c_b(q0) -> q0
+
+ren_a_b(q1a) -> q1b 
+ren_a_c(q1a) -> q1c 
+ren_b_c(q1a) -> q1a 
+ren_b_a(q1a) -> q1a 
+ren_c_a(q1a) -> q1a 
+ren_c_b(q1a) -> q1a 
+ren_a_b(q1b) -> q1b 
+ren_a_c(q1b) -> q1b 
+ren_b_c(q1b) -> q1c 
+ren_b_a(q1b) -> q1a 
+ren_c_a(q1b) -> q1b 
+ren_c_b(q1b) -> q1b 
+ren_a_b(q1c) -> q1c 
+ren_a_c(q1c) -> q1c 
+ren_b_c(q1c) -> q1c 
+ren_b_a(q1c) -> q1c 
+ren_c_a(q1c) -> q1a 
+ren_c_b(q1c) -> q1b 
+
+oplus(q0,q0) -> q0 
+oplus(q1a,q0) -> q1a oplus(q0,q1a) -> q1a 
+oplus(q1b,q0) -> q1b oplus(q0,q1b) -> q1b 
+oplus(q1c,q0) -> q1c oplus(q0,q1c) -> q1c
+
+Term oplus(ren_b_a(add_a_b(oplus(a10,b01))),a01)
+Term ren_b_a(add_a_b(oplus(ren_b_a(add_a_b(oplus(a10,a01))),a01)))
+Term oplus(ren_b_a(add_a_b(oplus(ren_b_a(add_a_b(oplus(a01,a10))),a01))),b00)
+Term add_a_b(oplus(ren_b_a(add_a_b(oplus(ren_b_a(add_a_b(oplus(a01,a10))),a01))),b00))
+Term oplus(add_a_c(oplus(a10,c01)),c01)
+Term add_a_c(oplus(oplus(a10,a01),c01))
+Term oplus(a01,a10)
+Term add_a_b(
+       oplus(
+        ren_b_a(
+         add_a_b(
+          oplus(
+            ren_b_a(add_a_b(oplus(ren_b_a(add_a_b(oplus(a01,a10))),a01))),
+            b00))),
+        a01))
+
+Tautomaton Tuple
+Automata Singleton-X1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Automaton Inclusion-X1-X2
+States q0
+Final States q0
+Transitions
+a00 -> q0 
+b00 -> q0 
+c00 -> q0 
+a01 -> q0 
+b01 -> q0
+c01 -> q0
+a11 -> q0 
+b11 -> q0
+c11 -> q0
+
+oplus(q0,q0) -> q0
+add_a_b(q0) -> q0
+add_a_c(q0) -> q0
+add_b_c(q0) -> q0
+
+ren_a_b(q0) -> q0 ren_a_b(q0) -> q0
+ren_a_c(q0) -> q0 ren_a_c(q0) -> q0
+ren_b_c(q0) -> q0 ren_b_c(q0) -> q0
+ren_b_a(q0) -> q0 ren_b_a(q0) -> q0
+ren_c_a(q0) -> q0 ren_c_a(q0) -> q0
+ren_c_b(q0) -> q0 ren_c_b(q0) -> q0
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Automaton Equality-X1-X2
+States q0
+Final States q0
+Transitions
+a00 -> q0 
+b00 -> q0 
+c00 -> q0 
+a11 -> q0 
+b11 -> q0
+c11 -> q0
+
+add_a_b(q0) -> q0
+add_a_c(q0) -> q0
+add_b_c(q0) -> q0
+ren_a_b(q0) -> q0 ren_a_b(q0) -> q0
+ren_a_c(q0) -> q0 ren_a_c(q0) -> q0
+ren_b_c(q0) -> q0 ren_b_c(q0) -> q0
+ren_b_a(q0) -> q0 ren_b_a(q0) -> q0
+ren_c_a(q0) -> q0 ren_c_a(q0) -> q0
+ren_c_b(q0) -> q0 ren_c_b(q0) -> q0
+oplus(q0,q0) -> q0
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

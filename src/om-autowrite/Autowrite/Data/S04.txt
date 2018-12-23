@@ -1,0 +1,83 @@
+; From Irène Durand (Fossacs2001)
+Ops a:0 b:0 i:1 l:1 m:1 f:3
+Vars x
+TRS Fossacs2001
+i(a) -> i(a)
+i(b) -> i(a)
+f(x, a, b) -> i(x)
+f(b, x, a) -> i(x)
+f(a, b, x) -> i(x)
+f(a, a, a) -> a
+f(b, b, b) -> a
+l(x) -> m(x)
+m(a) -> a
+m(b) -> b
+
+Term f(m(b),m(b),m(b))
+Term f(l(@),l(@),l(@))
+; strong Jacquemard mars-2004
+; aut-c 3 states 62 rules
+; aut-d 13 states 74 rules
+; f(m(b),m(b),m(b)) in 2 iterations 1s45
+; strong Jacquemard 2009-feb-11
+; aut-c 3 states 62 rules
+; aut-d 13 states 74 rules
+; f(i(a),i(a),i(a)) in 2 iterations in 0.09
+
+; nv Jacquemard 2009-02-18
+; aut-c 3 states 36 rules
+; aut-d 17 states 6139 rules
+; CBN-nv in 4 iterations in 1.3s
+; F in 0.968s 2009-02-18
+
+; nv extra Jacquemard mars-2004
+; aut-c 4 states 78 rules
+; aut-d 41 states 953 rules
+; f(l(@),l(@),l(@)) in 2 iterations in 18.69s
+; F in 0.2s 2009-02-18
+; aut-d 27 states 699 rules
+
+; growing Jacquemard mars-2004
+; aut-c 3 states 32 rules 
+; aut-d 8 states 538 rules
+; CBN-g in 3 iterations in 3s67
+; nv Jacquemard 2009-feb-11 idem
+
+; growing extra Jacquemard 13-jan-03
+; aut-c 6 states 64 rules 
+; aut-d 11 states 1367 rules
+; CBN@-g
+; F 2009-02-18 in 0.248
+; aut-c 4 states 56 rules 
+
+; strong Toyama 16-oct-2003
+; aut-c 4 states 79 rules
+; aut-d 7 states 38 rules
+; f(m(b),m(b),m(b)) in 2 iterations
+
+; nv Toyama 
+; aut-c 4 states 79 rules 
+; aut-d 13 states 2238 rules
+; CBN-nv in 4 iterations
+; I in 14.13s 22-mar-2004
+
+; nv extra Toyama 
+; aut-c 6 states 238 rules
+; aut-d 19 states 539 rules
+; f(l(@),l(@),l(@)) in 2 iterations
+; I 17.79s 22-mars-04
+; F 0.5s 2009-02-18
+
+; growing Toyama 22-mar-2004
+; aut-c 3 states 39 rules
+; aut-d 8 states 538 rules
+; CBN-g in 3 iterations
+; I 1.9s
+; F 0.13s 2009-02-18
+
+; growing extra Toyama 22-mar-2004
+; aut-c 4 states 80 rules
+; aut-d 11 states 1367 rules
+; CBN@-g
+; I in 7.11s
+; F in 0.352s

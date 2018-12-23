@@ -1,0 +1,45 @@
+;;; Oyamagushi's Example 4.2 growing
+Ops a:0 c:0 f:2 g:2 h:1 k:1
+Vars x
+TRS Oyamaguchi
+f(g(a,x),a) -> a
+f(g(x,a),k(a)) -> a
+f(k(c),x) -> a
+g(k(a),k(a)) -> h(k(a))
+k(k(a)) -> a
+h(x) -> k(x)
+
+; strong Toyama 20-mar-2004
+; aut-c 16 states 547 rules
+; aut-d 31 states 686 rules
+; f(g(h(a),h(a)),h(a))
+; in 3 iterations
+; G in 14.18s
+
+; nv Toyama 20-mar-2004
+; aut-c 23 states 1107 rules
+; aut-d 83 states 1106 rules
+; f(g(h(a),h(a)),h(h(a)))
+; in 3 iterations 
+; G in 1m 0.86s
+
+; growing Toyama 20-mar-2004
+; aut-c 11 states 267 rules
+; aut-d 39 states 3122 rules
+; CBN-g 
+; in 5 iterations 
+; G in 18s
+
+; strong Jacquemard 19-mar-2004
+; aut-c 13 states 524 rules
+; aut-d states rules
+
+; nv Jacquemard 20-oct-2003
+; aut-c 15 states 318 rules
+; aut-d states rules
+
+; growing Jacquemard 20-oct-2003
+; aut-c 15 states 206 rules
+; aut-d 83 states 4198 rules
+; in CBN-g in 5 iterations
+

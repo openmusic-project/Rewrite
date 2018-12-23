@@ -1,0 +1,32 @@
+Automaton I-NEQ
+States q0 q1
+Final States q0
+Transitions
+oplus(q0,q0) -> q0
+oplus(q0,q1) -> q0
+oplus(q1,q0) -> q0
+add_b_c(q0) -> q0
+add_a_c(q0) -> q0
+add_a_b(q0) -> q0
+ren_c_b(q0) -> q0
+ren_c_a(q0) -> q0
+ren_b_c(q0) -> q0
+ren_b_a(q0) -> q0
+ren_a_c(q0) -> q0
+ren_a_b(q0) -> q0
+oplus(q1,q1) -> q0
+add_b_c(q1) -> q1
+add_a_c(q1) -> q1
+add_a_b(q1) -> q1
+ren_c_b(q1) -> q1
+ren_c_a(q1) -> q1
+ren_b_c(q1) -> q1
+ren_b_a(q1) -> q1
+ren_a_c(q1) -> q1
+ren_a_b(q1) -> q1
+c0 -> q1
+b0 -> q1
+a0 -> q1
+c1 -> q1
+b1 -> q1
+a1 -> q1

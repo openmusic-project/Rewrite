@@ -1,0 +1,17 @@
+Ops a:0 f:2 g:1
+
+Automaton A0
+States q1 q2 q3 q4
+Final States q1 q4
+Transitions
+a -> q1
+a -> q3
+g(q1) -> q2
+g(q1) -> q2
+g(q2) -> q2
+f(q2,q2) -> q3
+g(q1) -> q4
+g(q1) -> q4
+g(q2) -> q4
+f(q2,q2) -> q3
+

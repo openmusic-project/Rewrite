@@ -1,0 +1,73 @@
+Ops 0:0 s:1 +:2 *:2
+Vars x y
+
+TRS R
++(0,x) -> x
++(s(x),y) -> s(+(x,y))
+*(0,x) -> 0
+*(s(x),y) -> +(*(x,y),y)
+
+Automaton EVEN
+States odd even
+Final States even
+
+Transitions
+0 -> even
+s(even) -> odd
+s(odd) -> even
+
+Automaton RSA
+States qx qf
+Final States qf
+
+Transitions
+0 -> qf
+s(qf) -> qf
+0 -> qx
+s(qx) -> qf
+s(qx) -> qx
++(qx,qx) -> qx
+*(qx,qx) -> qx
+
+Automaton nf
+States q0 q1
+Final States q0 q1
+
+Transitions
+s(q1) -> q1
+s(q0) -> q1
+0 -> q0
+
+Automaton reducible
+States q0 q1 q2 q3 q4 q5 q6 q7
+Final States q6
+
+Transitions
+s(q6) -> q6
++(q7,q6) -> q6
++(q6,q7) -> q6
+*(q7,q6) -> q6
+*(q6,q7) -> q6
++(q5,q7) -> q6
++(q4,q7) -> q6
+*(q5,q7) -> q6
+*(q4,q7) -> q6
+0 -> q7
+s(q7) -> q7
++(q7,q7) -> q7
+*(q7,q7) -> q7
++(q5,q7) -> q3
++(q4,q7) -> q2
+*(q5,q7) -> q1
+0 -> q5
+*(q4,q7) -> q0
+s(q7) -> q4
+
+Termset RS 0 s(x)
+
+Termset "T(F)" x
+
+Term *(*(0,s(0)),+(0,s(0)))
+Term *(o,+(0,s(0)))
+Term *(*(0,s(0)),o)
+Term s(s(s(0)))

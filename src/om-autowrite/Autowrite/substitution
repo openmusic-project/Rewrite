@@ -1,0 +1,3 @@
+#!/bin/sh
+#set -x
+sed -e "s/$1/$2/"

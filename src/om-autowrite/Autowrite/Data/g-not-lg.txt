@@ -1,0 +1,8 @@
+Ops a:0 b:0 f:3 h:1 k:1
+Vars x y z
+TRS R
+f(x,a,b) -> a
+f(b,x,a) -> a
+f(a,b,x) -> a
+f(b,b,b) -> b
+h(x)  -> f(x,x,x)

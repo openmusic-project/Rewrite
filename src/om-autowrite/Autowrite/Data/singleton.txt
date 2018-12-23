@@ -1,0 +1,50 @@
+Ops 
+  1:0
+  2:0
+  oplus:2 
+  ren_1_1:1  
+  ren_1_2:1 
+  ren_2_1:1 
+  ren_2_2:1 
+  add_1_1:1  
+  add_1_2:1 
+  add_2_1:1 
+  add_2_2:1
+
+Automaton Singleton1
+States q0 q1
+Final States q1
+Transitions
+1 -> q1
+oplus(q0,q0) -> q0
+oplus(q1,q0) -> q1
+oplus(q0,q1) -> q1
+oplus(q1,q1) -> q1
+
+ren_1_1(q0) -> q0
+ren_1_2(q0) -> q0
+ren_2_1(q0) -> q0
+ren_2_2(q0) -> q0
+
+ren_1_1(q1) -> q1
+ren_1_2(q1) -> q1
+ren_2_1(q1) -> q1
+ren_2_2(q1) -> q1
+
+add_1_1(q0) -> q0
+add_1_2(q0) -> q0
+add_2_1(q0) -> q0
+add_2_2(q0) -> q0
+
+add_1_1(q1) -> q1
+add_1_2(q1) -> q1
+add_2_1(q1) -> q1
+add_2_2(q1) -> q1
+
+
+Term oplus(1,2)
+Term 1
+Term 2
+Term add_1_2(oplus(ren_2_1(add_1_2(oplus(ren_2_1(add_1_2(oplus(ren_2_1(add_1_2(oplus(1,2))),2))),2))),2))
+Term oplus(1,1)
+

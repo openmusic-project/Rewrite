@@ -1,0 +1,49 @@
+;IC8.19
+;WRS04 R5
+Ops a:0 b:1 f:4 g:1 h:1 i:0 j:2
+Vars x y z u
+TRS R5
+
+f(x,a,b(y),z) -> g(z)
+f(b(x),y,a,z) -> g(z)
+f(a,b(x),y,z) -> g(z)
+f(a,a,a,x) -> i
+f(b(x),b(y),b(z),u) -> i
+i -> i
+g(a) -> i 
+g(b(x)) -> i 
+h(a) -> i 
+h(b(x)) -> j(i,x) 
+j(x,a) -> a 
+j(x,b(y)) -> b(a)
+
+; @g
+; aut-c-@-toyama 
+; 6 states 1354 rules in 3m16s
+; aut-d 25 states 160463 rules in 3m49s
+; not in CBN@-g f(h(b(@)),h(b(@)),h(b(@)),@) in 7m15s
+
+; g
+; aut-c-@-toyama 5 states 668 rules S6 in 47.44s
+; aut-d 19 states 130741 rules S6 in 49.96s
+; in CBN@-g
+
+; 14-nov-2004
+; WN(Rg,G,F) == WN(Rg,F) ST in 2m29s
+; WNo(Rg,G,F) == WN(Rg,F) ST in 2m33s
+
+; strong toyama 18-nov-2004
+; aut-c-toyama-o 5 states 668 rules ST in 12.35s
+; aut-d-s-det 8 states 28 rules ST in 0.04s
+; in CBN-s
+
+; nv toyama 14-nov-2004
+; aut-c-toyama-o 5 states 668 rules ST in 29.59s
+; aut-d-s-det 8 states 28 rules ST in 32.37s
+; in CBN-nv
+
+; nv toyama 14-nov-2004
+; aut-c-@-toyama-o 6 states 1354 rules ST in 2.41s
+; aut-d-s-det 25 states 160463 rules ST in 3m24s
+; not in CBN-s f(h(b(@)),h(b(@)),h(b(@)),@)
+

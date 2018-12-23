@@ -1,0 +1,26 @@
+Automaton I(I(Equality-X2-X3 Equality-X1-X3) Equality-X1-X2)
+States q0
+Final States q0
+Transitions
+oplus(q0,q0) -> q0
+ren_c_b(q0) -> q0
+ren_c_a(q0) -> q0
+ren_b_c(q0) -> q0
+ren_b_a(q0) -> q0
+ren_a_c(q0) -> q0
+ren_a_b(q0) -> q0
+add_b_c(q0) -> q0
+add_a_c(q0) -> q0
+add_a_b(q0) -> q0
+c1111 -> q0
+c1110 -> q0
+c0001 -> q0
+c0000 -> q0
+b1111 -> q0
+b1110 -> q0
+b0001 -> q0
+b0000 -> q0
+a1111 -> q0
+a1110 -> q0
+a0001 -> q0
+a0000 -> q0

@@ -1,0 +1,3 @@
+Ops a:0 f:1
+TRS rebelsky10
+f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(a)))))))))))))))))))) -> a

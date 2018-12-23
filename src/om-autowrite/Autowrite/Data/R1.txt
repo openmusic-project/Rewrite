@@ -1,0 +1,66 @@
+Ops a:0 b:0 c:0 d:0 e:0 f:2 g:2
+Vars x
+TRS R1
+f(g(a,x),b) -> x
+f(g(x,a),c) -> x
+f(d,x) -> x
+g(e,e) -> e
+
+; growing extra Toyama 2009-feb-10
+; aut-c 29 states 1689 rules
+; aut-d 174 states 60558 rules
+; CBN-g 
+; 2009-02-18 in 16.36s
+
+; growing Toyama 
+; aut-c 29 states 1688 rules ST in 1m43s
+; aut-d 174 states 60557 rules ST in  48s
+; CBN-g in 6 iterations  S6 in 4m22.43s
+; 2009-02-18 in 15.85
+
+; nv  Toyama 20-mars-2004
+; aut-c 21 states 888 rules ST in 42s
+; aut-d 45 states 4055 rules 0s76
+; CBN-nv
+; in 3 iterations 
+; G in 29s56 20-mars-2004
+; I in 1m30s 22-mar-2004
+; 2009-02-18 in 3.97s
+
+; strong Toyama 
+; aut-c 17 states 584 rules ST in 21s
+; aut-d 32 states 727 rules ST in 0.12s
+; f(g(f(d,a),f(d,a)),f(d,a))
+; in 3 iterations
+; I 20.52s 22-mar-2004
+; 2009-02-18 in 1.9s
+
+; growing Jacquemard 16-may-2004
+; aut-c 9 states 85 rules 0.7s
+; aut-d 88 states 4152 rules 8.5s
+; CBN-g in 6 iterations in 9.2s
+; 2009-02-18 in
+; aut-c 12 states 201 rules
+; aut-d  states rules
+
+
+; growing Jacquemard 2009-feb-10
+; aut-c 12 states 201 rules
+; aut-d  states  rules 
+
+; nv Jacquemard 16-may-2004
+; aut-c 9 states 157 rules in 2.96s
+; aut-d states rules
+
+; nv Jacquemard 2009-feb-10
+; aut-c 12 states 333 rules
+; aut-d states rules
+
+; strong Jacquemard 27-mars-2004
+; aut-c 9 states 178 rules 
+; aut-d states rules
+; 2009-02-18 in 1.9s
+; aut-c 12 states 343 rules 
+; aut-d states rules
+
+

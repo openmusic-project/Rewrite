@@ -1,0 +1,43 @@
+;;; Requirements
+#|
+* A Common Lisp.  Known to work: SBCL 1.0.*
+
+* If you wish to use the graphical interface: the MCCLIM
+
+  ** McCLIM.  The "Orthodox New Year" release is needed, along with
+     *** spatial-trees;
+
+     *** at least one means of displaying graphics: CLX is
+         recommended, but the OpenMCL/Cocoa bridge or the gtkairo
+         backend are possibilities.
+
+  ** Flexichain.  ASDF-INSTALLable or from common-lisp.net CVS, the
+     flexichain project, flexichain module.
+
+  Make sure ASDF knows how to find all of these projects.
+|#
+
+#|
+
+;;; Start the lisp system
+
+;;; Load the autowrite.asd file or make sure the directory in which it
+;;; lives is in the asdf:*central-registry* list of directories
+
+(load "nautowrite.asd")  ;; if you do not wish the graphical interface
+;; or
+(load "autowrite.asd")   ;; if you wish the graphical interface
+
+;;; Compile and load the system
+
+(asdf:operate 'asdf:load-op :nautowrite)
+(asdf:operate 'asdf:load-op :autowrite) ;; if you wish to use the graphical interface
+
+;;; or if the source directory is in a standard location
+(require :nautowrite)
+;; or if you wish the graphical interface
+(require :autowrite)
+
+;;; Run Autowrite
+
+(autowrite::autowrite)

@@ -1,0 +1,23 @@
+Ops o:0 a:1 b:1 c:1 d:1
+
+Vars x
+
+TRS R
+b(a(x)) -> a(b(b(x)))
+c(b(x)) -> c(b(b(x)))
+
+Automaton A0
+States q qb qc qd
+Final States qb
+
+Transitions
+d(q) -> qd
+c(qd) -> qc
+a(qc) -> qb
+b(qc) -> qb
+b(qb) -> qb
+
+
+
+
+

@@ -1,0 +1,30 @@
+;;; Oyamagushi's Example 4.1 nv
+Ops a:0 k:1 f:2
+Vars x y
+TRS "Oya-4.1"
+f(f(a,x),f(a,y)) -> a
+f(f(x,a),f(k(a),a)) -> a
+
+; strong Toyama 2004-may-25
+; aut-c 19 states 382 rules in 23.06s
+; aut-d 42 states 931 rules in 0.57s
+; f(f(a,a),f(f(f(f(a,a),f(a,a)),f(f(a,a),f(a,a))),f(f(a,a),f(a,a))))
+; in 5 iterations in 23.68s
+
+; growing = nv Toyama 2004-may-25
+; aut-c 10 states 112 rules in 2.37s
+; aut-d 39 states 1561 rules in 0.71s
+; CBN-g in 7 iterations in 3.08s
+
+; strong Jacquemard 2005-may-26
+; aut-c 12 states 82 rules in 0.77s
+; aut-d 95 states 2627 rules in 
+; CBN-g in 7 iterations
+
+;; nv = growing Jacquemard 2004-may-26
+; aut-c 12 states 62 rules in 0.63s
+; aut-d 91 states 1949 rules in 4.37s
+; CBN-g in 5.01s
+
+
+

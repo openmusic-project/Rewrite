@@ -1,0 +1,9 @@
+;
+Ops a:0 b:0 c:0 f:1 g:1 h:1
+
+Vars x
+TRS R
+f(x) -> g(a)
+g(x) -> h(x)
+h(c) -> f(b)
+

@@ -1,0 +1,5 @@
+Ops a:0 f:2 g:1 h:1
+Vars x y
+TRS R
+g(f(h(y),h(x))) -> f(x,y)
+

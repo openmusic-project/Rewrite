@@ -1,0 +1,10 @@
+;from AG01 4.21
+
+Ops f:1 0:0 1:0 s:1 g:1
+
+Vars x
+TRS R
+f(1) -> f(g(1))
+f(f(x)) -> f(x)
+g(0) -> g(f(0))
+g(g(x)) -> g(x)

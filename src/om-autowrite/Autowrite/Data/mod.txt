@@ -1,0 +1,9 @@
+Ops a:0 b:0 f:3 g:1
+Vars x
+
+TRS mod
+g(x) -> x
+f(x,a,b) -> a
+f(b,x,a) -> a
+f(a,b,x) -> a
+

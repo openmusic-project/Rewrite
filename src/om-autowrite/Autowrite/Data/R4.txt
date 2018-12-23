@@ -1,0 +1,62 @@
+;IC8.18
+;WRS04 R4
+Ops a:0 b:2 c:1 f:3 g:1 h:1 i:0 j:2
+Vars x y z u v w
+TRS R4
+f(x,a,b(y,z)) -> c(i)
+f(x,a,c(y)) -> i
+f(a,a,a) -> i
+f(a,b(x,y),z) -> a
+f(a,c(x),y) -> i
+f(b(x,y),z,a) -> a
+f(b(x,y),b(z,u),b(v,w)) -> i
+f(b(x,y),b(z,u),c(v)) -> i
+f(b(x,y),c(z),b(u,v)) -> i
+f(b(x,y),c(z),c(u)) -> i
+f(c(x),a,a) -> i
+f(c(x),b(y,z),a) -> i
+f(c(x),b(y,z),b(u,v)) -> i 
+f(c(x),b(y,z),c(u)) -> i 
+f(c(x),c(y),z) -> i
+g(x) -> b(x,i)
+h(a) -> i
+h(b(a,x)) -> a
+h(b(b(x,y),z)) -> b(i,i)
+h(b(c(x),y)) -> i
+h(c(x)) -> i
+j(a,a) -> i
+j(a,b(x,y)) -> i
+j(a,c(x)) -> i
+j(b(x,y),z) -> i
+j(c(x),y) -> a
+i -> i
+
+; strong toyama 14-nov-2004 
+; aut-c 14 states 3181 rules ST in 4m34.68s
+; aut-d 12 states 24 rules 0.11s
+; not in CBNs f(i,i,i) 
+; 2009-02-18 in 22.8s
+
+; nv toyama 14-nov-2004
+; aut-c 18 states 6537 rules in 31m36.45s
+; aut-d 85 states 628832 rules in 7m46.34si	
+; in CBNnv
+; 2009-02-18 in 3mn36s
+
+; nv toyama extra 16-nov-2004
+; aut-c 26 states 19010 rules ST in 299m14.01s
+; aut-d 115 states 353013 rules ST in 5m36.55s
+; not in CBNnv@ j(f(h(g(@)),h(g(@)),h(g(i))),@)
+; 2009-02-18 in 21mn15s
+
+; g toyama extra 18-avr-2004
+; aut-c 11 states 1609 rules in 3m15s
+; aut-d 52 states 146174 rules in 5m54s
+; in CBNg in 9m9s
+; 2009-02-18 in 1mn4s
+; aut-c 13 states 2578 rules in 3m15s
+; aut-d 58 states 202017 rules in 5m54s
+
+; strong jacquemard 2009-02-18
+; aut-c 11 states 1330 rules
+; aut-d states rules Heap exhausted

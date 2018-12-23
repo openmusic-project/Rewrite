@@ -1,0 +1,8 @@
+Ops f:3 a:0 b:0 c:0
+Vars x
+
+TRS S08
+f(x,a,b) -> x
+f(b,x,a) -> c
+f(a,b,x) -> c
+c -> c

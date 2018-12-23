@@ -1,0 +1,205 @@
+<html><head>
+<title>Autowrite : A tool for checking properties of term rewrite systems</title>
+</head><body>
+
+<h1><center>
+Version <blink>3.1</blink> (February 2005) of <b>Autowrite</b> is available!
+</center></h1>
+
+<h2> What is <b>Autowrite</b> </h2>
+
+<p>
+<b>Autowrite</b> is a project carried out at the
+<a href="http://www.labri.u-bordeaux.fr/">
+<em>Laboratoire Bordelais de Recherche en Informatique</em></a>
+(<a href="http://www.labri.u-bordeaux.fr/"><b>LaBRI</b></a>)
+of the <em>Universit&eacute; Bordeaux&nbsp;I</em>, by the
+<a href="http://www.labri.fr/Recherche/LLA/index-fr.htm">
+LLA</a> (Logic, Formal Languages and Applications) team.
+<b> Autowrite </b> is an experimental tool written in
+<a href="http://www.cons.org/cmucl/"> CMU Common Lisp </a>
+for checking properties of term rewrite systems.
+It was initially designed to check call-by-need (CBN) properties of TRSs.
+For this purpose, it implements the tree automata constructions used in
+the decidability proofs of the call-by-need properties and many useful
+operations on terms, TRSs and tree automata.
+This new version of Autowrite includes new functionalities related to TRSs, timing information
+but the most interesting new feature is the possibility to handle directly (load, save, combine)
+bottom-up tree automata.
+
+The graphical interface (still under construction) running under X11 
+is written using
+<a href="http://www.cons.org/free-clim/"> FreeCLIM </a>, the free implementation
+of the 
+<a href="http://clim.mikemac.com/spec/clim.html">
+CLIM specification </a>. 
+From this interface, one can handle TRSs, tree automata and build many tree automata related to
+TRSs. one can check membership to CBN
+for the different approximations of a given system.
+
+<h2> Main features of <b>Autowrite</b> </h2>
+<p>
+The principal features of <b>Autowrite</b> are:
+<ul>
+  <li> Terms and term rewrite systems.
+   Given a term t and a term rewrite system R over a signature F
+  <ul>
+    <li> check whether: R is left-linear, overlapping, orthogonal, constructor
+    <li> check whether: R is forward-branching
+    <li> compute approximations of R
+    (strong-approximation, nv-approximation, linear-growing-approximation, growing-approximation) 
+    <li>  decide whether R is in CBN_alpha (for the different approximations  alpha)
+    and exhibits an alpha-free term in the negative case.
+    <li>  Check whether NF(R) (the set of normal forms) is empty
+    <li>  Check whether ENF(R) (the set of external normal forms) is empty
+    <li>  If F is the signature consisting of the terms appearing in R and G be F
+extended by a fresh constant symbol, decide whether the set of
+terms in T(F) normalizable with (R,F), WN(R,F), is different (strictly included)
+into the set of terms in T(F) normalizable with (R,F), WN(R,G,F).
+The same check can be done with R extended with the rule o -> o.
+    <li>  Check whether the current approximation S is arbitrary i.e. if there
+exists a term t in T(F) such that t -*->(R,FU{@}) @
+             
+  </ul>
+  <li> Tree automata. Given tree automata A and a term t <br>  
+  <ul> 
+    <li> decide whether t is in L(A)
+    <li> decide whether L(A) is empty
+    <li> compute a deterministic version of A
+    <li> compute a reduced version of A
+    <li> compute the complement of A
+    <li> given another automaton B compute the union or the intersection of A and B
+  </ul>
+  <li> Automata and term rewrite systems.<br>
+  <ul>
+    <li> given a set of ground terms S: compute a tree automaton A_S such that L(A_S) = S
+    <li> given a set of linear terms S: compute a tree automaton A_S such that L(A_S) recognizes the set of instances of S
+    <li> given the set of left-handsides of a left-linear TRS R: compute an automaton
+A_NF(R) such that L(A_NF(R)) = NF(R)
+    <li> given tree automaton A and a left-linear growing term rewrite system: <br>
+     compute an automaton C_[R,A] such that L(C_[R,A]) = (-*->)[L(A)]
+    <li>  given a left-linear growing extended term rewrite system R:
+ compute an automaton D_R such that L(D_R) is empty if and only if R is in CBN.
+      </ul>
+</ul></p>
+
+<a name="distribution">
+<h2> Obtaining <b>Autowrite</b> </h2>
+
+<p>
+The <b>Autowrite</b> distribution is publically available for research purposes.
+The <b>Autowrite</b> distribution consists of a Linux <tt>gzip</tt>-compressed <tt>tar</tt> file.
+<br>
+The currently supported machines and operating systems are listed below.
+<menu>
+<li> PC x86 under Linux <a href="Autowrite.tgz"><b>Autowrite.tgz</b></a>
+ </menu>
+Other architectures can be made available upon request.
+</p>
+<p>
+A collection of examples of term rewrite systems to use with 
+<b>Autowrite</b> is included in the Data directory of the distribution.
+</p>
+<h2> Installing <b>Autowrite</b> </h2>
+<p>
+Download the relevant Autowrite.tgz tar file <br>
+<UL>
+<li> tar xzvf Autowrite.tgz <br>
+<li> cd Autowrite <br>
+<li> ./INSTALL <br>
+</UL>
+</p>
+
+<h2> Running <b>Autowrite</b> </h2>
+<p>
+<UL>
+<li> xhost +
+<li> ./autowrite
+</UL>
+At any time from the command line, the user may get <B>help</B> about
+the current possibilities by clicking on the right-button.
+Commands are accessible either thru the command line (using <B>completion</B>)
+or from the menus items.
+For instance, instead of
+hitting the Quit button you may type Q <TAB>; 
+instead of selecting the Load spec of the File menu, 
+you may type 'Lo <TAB> Sp <TAB>'...
+<br> Note that some examples may run for a <B> very long time </B> as the problem of deciding membership
+to CBN_alpha (can be from exponential to triply exponential).
+<br> 
+Add your own specifications in the Data directory
+</p>
+
+<p>
+Please refer to the
+<a href="manual"><b>Autowrite</b> user's guide</a>
+to see how to use <b>Autowrite</b>. 
+Also available in <a href="manual.ps">Postscript</a> or <a href="manual.pdf">PDF</a>
+</p>
+
+<h2> Contact information </h2>
+
+<p>
+Should you have any comments or suggestions regarding <b>Autowrite</b>,
+or ideas on new functionalities that you would like to see in future
+releases of <b>Autowrite</b>, please send them to
+<a href="mailto:idurand@labri.fr">
+<tt>idurand@labri.fr</tt></a>.
+</p>
+
+<a href="Releases"> Previous Releases </a>
+
+<h2> Bibliography </h2>
+<p>
+F. Jacquemard. Decidable approximations of term rewriting systems.
+In  Proc. 7th RTA, volume 1103 of LNCS, pages 362--376, 1996. 
+<br>
+H. Comon. <A HREF = "http://www.lsv.ens-cachan.fr/~comon/biblio.html">Sequentiality, Monadic Second Order Logic and Tree Automata.</A>
+Information and Computation, 157:25--51, 2000.
+<br>
+I.Durand and A.Middeldorp. <A HREF = "http://www.labri.u-bordeaux.fr/Rapports/">On the complexity of deciding call-by-need.</A>
+Technical Report 1194-98, LaBRI, Université de Bordeaux I, 1998.
+<br>
+I.Durand and A.Middeldorp. On the modularity  of deciding call-by-need.
+In Proc. FoSSaCS'01, volume 2030 of LNCS, pages 199-213, 2001
+<br>
+I.Durand and A.Middeldorp. Decidable call-by-need computations in term rewriting.
+Information and Computation</EM>, 196:95-126, 2005.
+<br>
+I. Durand. Autowrite: A tool for term rewrite systems and tree automata. Workshop on Rewriting Strategies.
+To appear in ENTCS.
+<br>
+H. Comon and M. Dauchet and R. Gilleron and F. Jacquemard and D. Lugiez a
+nd S. Tison and M. Tommasi.
+<A HREF = "http://www.grappa.univ-lille3.fr/tata/">Tree Automata Techniques and Applications.</A>
+</p>
+<h2> Pointers to relevant sites </h2>
+
+<p>
+Here are some pointers to other sites with similar interests,
+listed by topic.
+</p>
+
+<h3> Sites and people </h3>
+
+<dl>
+  <dt> <a href="http://rewriting.loria.fr/">
+    Term Rewriting </a>
+  <dt> <a href="http://www.cons.org/cmucl/">
+    CMU Common Lisp</a>
+  <dt> <a href="http://www.cons.org/free-clim/">
+    Free CLIM </a>
+  <dt> <a href="http://mcclim.cliki.net/index">
+    McCLIM </a>
+</dl>
+
+</dl>
+
+<address>
+<a href="../index.html">
+Irène Durand
+</a></address>
+
+</body></html>
+<a href="http://www.labri.u-bordeaux.fr/~idurand/index.html">
+<base href="/~idurand/autowrite/">

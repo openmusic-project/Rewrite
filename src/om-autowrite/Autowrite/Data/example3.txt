@@ -1,0 +1,73 @@
+Ops o:0 s:1 plus:2 times:2 square:1 
+
+
+Automaton A0
+
+States qnew27:0 qnew26:0 qnew25:0 qnew24:0 qnew23:0 qnew22:0 qnew21:0 qnew20:0 qnew19:0 qnew18:0 qnew17:0 qnew16:0 qnew15:0 qnew14:0 qnew13:0 qnew12:0 qnew11:0 qnew10:0 qnew9:0 qnew8:0 qnew7:0 qnew6:0 qnew5:0 qnew4:0 qnew3:0 qnew2:0 qnew1:0 qnew0:0 q0:0 q1:0 q2:0 q3:0 qf1:0 qf2:0 qf3:0 qf4:0 
+
+Final States qf1 qf2 qf3 qnew23 
+
+Transitions 
+o -> q0
+s(q0) -> q1
+s(q1) -> q2
+s(q2) -> q3
+s(q3) -> q3
+square(q0) -> qf1
+square(q1) -> qf2
+square(q2) -> qf3
+times(q0,q0) -> qf1
+times(q1,q1) -> qf2
+times(q2,q2) -> qf3
+o -> qf1
+plus(q1,qnew3) -> qf2
+times(q0,q1) -> qnew3
+plus(q2,qnew2) -> qf3
+times(q1,q2) -> qnew2
+s(qnew11) -> qf2
+plus(q0,qnew3) -> qnew11
+s(qf3) -> qf3
+plus(q1,qnew2) -> qf3
+o -> qnew3
+plus(q2,qnew5) -> qnew2
+times(q0,q2) -> qnew5
+o -> qnew11
+times(q0,q1) -> qnew11
+s(qnew18) -> qf3
+plus(q0,qnew2) -> qnew18
+s(qnew15) -> qnew2
+plus(q1,qnew5) -> qnew15
+plus(q2,qnew23) -> qnew23
+o -> qnew5
+times(q0,q3) -> qnew12
+s(qnew15) -> qnew18
+plus(q2,qnew5) -> qnew18
+times(q1,q2) -> qnew18
+s(qnew22) -> qnew15
+plus(q0,qnew5) -> qnew22
+plus(q1,qnew23) -> qnew23
+plus(q2,qnew12) -> qnew20
+o -> qnew12
+times(q2,q3) -> qnew23
+square(q3) -> qnew23
+times(q3,q3) -> qnew23
+plus(q3,qnew23) -> qnew23
+times(q0,q2) -> qnew22
+o -> qnew22
+plus(q0,qnew23) -> qnew23
+s(qnew25) -> qnew20
+plus(q1,qnew12) -> qnew25
+times(q1,q3) -> qnew23
+plus(q3,qnew12) -> qnew23
+s(qnew20) -> qnew23
+s(qnew23) -> qnew23
+s(qnew27) -> qnew25
+plus(q0,qnew12) -> qnew27
+o -> qnew27
+times(q0,q3) -> qnew27
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+   
+a l'avenir supprimer make-gstate si on fait tout avec les bit-vector
+mais pour l'instant, il y en a encore besoin dans nlsaturation!!
+
+faire nlsaturation uniquement avec des tables de hachage
+
+faire des unsorted containers
+
+regler le probleme des names contenant des caracteres speciaux
+pour les etats d'automates
+
+mettre un algo efficace pour CBNs
+
+display de l' avancement a refaire
+faire une pile processus pouvoir remettre en avant plan un processus
+pour le tuer
+
+utiliser plus les presentation-types
+voir la completion avec Robert
+integrer l' omega reduction

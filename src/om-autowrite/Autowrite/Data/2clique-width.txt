@@ -1,0 +1,32 @@
+Ops 
+  a:0
+  b:0
+  oplus:2 
+  ren_1_1:1  
+  ren_1_2:1 
+  ren_2_1:1 
+  ren_2_2:1 
+  add_1_1:1  
+  add_1_2:1 
+  add_2_1:1 
+  add_2_2:1
+
+Automaton CWD
+States q0 q1 
+Final States ok
+Transitions
+a -> q0
+
+oplus(q0,q0) -> q0
+oplus(q1,q0) -> q1
+oplus(q0,q1) -> q1
+
+ren_1_1(q0) -> q0
+ren_1_2(q0) -> q0
+ren_2_1(q0) -> q0
+ren_2_2(q0) -> q0
+
+ren_1_1(q1) -> q1
+ren_1_2(q1) -> q1
+ren_2_1(q1) -> q1
+ren_2_2(q1) -> q1

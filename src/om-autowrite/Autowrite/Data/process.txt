@@ -1,0 +1,42 @@
+Ops S:4 Proc:2 Stop:1 cons:2 nil:0 plus:0 minus:0 s:1 0:0 end:0 add:2
+Vars x y z u c m n
+
+TRS R1
+add(x,nil) -> cons(x,nil)
+add(x,cons(y,z)) -> cons(y,add(x,z))
+
+S(Proc(cons(plus,y),c),z,m,n) -> S(Proc(y,s(c)),z,m,n)
+S(Proc(cons(minus,y),c),z,m,n) -> S(Proc(y,c),u,m,add(minus,n))
+
+S(x,Proc(cons(minus,y),c),m,n) -> S(x,Proc(y,s(c)),m,n)
+S(x,Proc(cons(plus,y),c),m,n) -> S(x,Proc(y,c),add(plus,m),n)
+
+S(Proc(x,c),z,cons(plus,m),n) -> S(Proc(x,s(c)),z,m,n)
+S(x,Proc(z,c),m,cons(minus,n)) -> S(x,Proc(z,s(c)),m,n)
+
+S(Proc(nil,c),z,nil,n) -> S(Stop(c),z,nil,n)
+S(x,Proc(nil,c),m,nil) -> S(x,Stop(c),m,nil)
+
+Term S(Stop(x),z,cons(plus,u),c)
+
+Automaton A1
+States q0 qinit qzero qnil qlist qsymb
+Description
+q0    : "the initial configuration"
+qinit : "a process in an initial state"
+qzero : "zero"
+qnil  : " the empty list"
+qlist : " any non empty list of plus and minus symbols"
+qsymb : "any symbol" 
+
+Final States q0
+Transitions
+cons(qsymb,qnil) -> qlist
+cons(qsymb,qlist) -> qlist
+Proc(qlist,qzero) -> qinit
+S(qinit,qinit,qnil,qnil) -> q0
+0 -> qzero
+nil -> qnil
+plus -> qsymb
+minus -> qsymb
+

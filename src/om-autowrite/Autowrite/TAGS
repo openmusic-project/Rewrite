@@ -1,0 +1,1964 @@
+
+abstract-automaton.lisp,1192
+(defgeneric compute-target 3,26
+(defgeneric final-state-fun 6,153
+(defgeneric deterministic-p 10,308
+(defclass automata 12,350
+(defun make-automata 16,460
+(defgeneric transitions-of 18,512
+(defclass abstract-automaton 22,602
+(define-condition state-found 25,729
+(define-condition puits-found 29,853
+(define-condition success-found 30,901
+(defmethod final-state-p 32,952
+(defmethod final-state-p 34,1064
+(defmethod puits-state-p 37,1141
+(defmethod puits-state-p 38,1212
+(defmethod puits-state-p 39,1285
+(defgeneric puits-target-p 42,1398
+(defmethod puits-target-p 44,1455
+(defmethod puits-target-p 45,1527
+(defmethod puits-target-p 46,1590
+(defgeneric finaltarget-p 49,1692
+(defmethod finaltarget-p 50,1738
+(defmethod deterministic-p 56,1876
+(defmethod signal-target 59,1970
+(defgeneric compute-target-and-signal 64,2099
+(defmethod compute-target-and-signal66,2163
+(defmethod compute-target 82,2597
+(defmethod compute-state 90,2859
+(defgeneric recognized-p 97,3061
+(defmethod recognized-p 100,3166
+(defmethod non-emptiness-witness 106,3329
+(defgeneric automaton-emptiness 116,3629
+(defmethod automaton-emptiness 121,3814
+(defmethod constant-signature 127,3964
+
+abstract-state.lisp,217
+(defclass abstract-state 3,26
+(defmethod root 5,59
+(defmethod arg 7,108
+(defmethod constant 9,154
+(defmethod name 11,199
+(defun abstract-state-p 14,274
+(defmethod symbols-from 17,332
+(defmethod vars-of 20,388
+
+abstract-transitions.lisp,401
+(defclass abstract-transitions 3,26
+(defgeneric transitions-fun 5,65
+(defgeneric transitions-compute-target 10,270
+(defgeneric apply-transition-function 13,396
+(defgeneric apply-transition-function-gft 16,536
+(defmethod apply-transition-function 19,682
+(defmethod transitions-compute-target 23,878
+(defmethod transitions-compute-target 27,1019
+(defmethod apply-transition-function-gft35,1289
+
+accessibilite.lisp,1282
+(defun new-puits-state 3,26
+(defgeneric new-marked 6,98
+(defmethod has-only-marked-states 9,221
+(defmethod has-only-marked-states 12,342
+(defmethod has-only-marked-states 16,475
+(defmethod has-only-marked-states 20,571
+(defgeneric mark-states 23,690
+(defgeneric accessible-states 26,799
+(defmethod accessible-states 29,907
+(defmethod mark-states 32,1027
+(defmethod reduced-automaton-p 39,1282
+(defmethod nreduce-automaton 48,1541
+(defgeneric reduce-automaton 59,1998
+(defmethod reduce-automaton 62,2137
+(defgeneric complete-transitions-p 66,2345
+(defmethod complete-transitions-p70,2541
+(defgeneric complete-automaton-p 80,2828
+(defmethod complete-automaton-p 82,2875
+(defmethod complete-transitions-with-puits90,3169
+(defmethod ncomplete-automaton 97,3512
+(defmethod complete-automaton 115,4260
+(defgeneric nautomaton-without-symbol 124,4608
+(defgeneric nautomaton-without-symbols 125,4666
+(defmethod nautomaton-without-symbol 127,4727
+(defmethod nautomaton-without-symbols 130,4876
+(defgeneric automaton-without-symbol 137,5233
+(defgeneric automaton-without-symbols 138,5290
+(defmethod automaton-without-symbols 140,5350
+(defmethod automaton-without-symbol 145,5543
+(defmethod nuncomplete-automaton 149,5702
+(defmethod uncomplete-automaton 165,6346
+
+approximation.lisp,327
+(defgeneric approximation 3,26
+(defun strong-approximation 6,138
+(defun nv-rh 10,249
+(defun nv-approximation 13,303
+(defun growing-rh 17,425
+(defun growing-approximation 29,722
+(defun linear-growing-approximation 35,924
+(defmethod approximation 38,1010
+(defmethod approximation 41,1114
+(defun get-approx-name 44,1260
+
+arities.lisp,172
+(defun filter-afai 3,26
+(defun arrange-for-arities 7,157
+(defun filter-afa 21,455
+(defun filter-afa-with-signature 29,647
+(defun arrange-for-arities-and-filter 32,761
+
+automata.lisp,402
+(defun matching-transitions 4,71
+(defun propagation-transitions 15,301
+(defgeneric make-qkey 24,536
+(defmethod make-qkey 26,569
+(defmethod make-qkey 29,641
+(defun gen-i-var-states 35,807
+(defun make-automaton-matching 38,886
+(defgeneric  make-automaton-universal 55,1420
+(defmethod make-automaton-universal 58,1560
+(defun make-redex-automaton 67,1859
+(defun make-reducible-automaton 72,2051
+
+automate.lisp,1618
+(defvar *limit-states-value* 2,25
+(defclass table-automaton 4,59
+(defmethod print-object 14,467
+(defmethod get-states 17,581
+(defmethod make-automaton20,678
+(defmethod final-state-fun 46,1416
+(defmethod puits-state-fun 52,1583
+(defun make-empty-automaton 56,1714
+(defmethod equivalence-classes-boundp 59,1815
+(defmethod puits-state-boundp 62,1933
+(defmethod unset-equivalence-classes 65,2035
+(defmethod set-complete-unknown 68,2155
+(defmethod set-epsilon-unknown 72,2260
+(defmethod unset-puits-state 75,2362
+(defmethod puits-state 78,2466
+(defmethod set-reduced-unknown 84,2705
+(defmethod show-states 87,2807
+(defmethod show 96,3153
+(defmethod show 99,3255
+(defmethod equivalence-classes 112,3664
+(defmethod get-equivalence-classes 118,3913
+(defmethod reduced-p 121,4029
+(defmethod complete-p 140,4710
+(defun number-states 150,5049
+(defgeneric name-states 158,5272
+(defmethod name-states 161,5370
+(defun states-named-p 175,5844
+(defgeneric states-numbered-p 179,5980
+(defmethod states-numbered-p 182,6073
+(defmethod transitions-list 186,6238
+(defmethod show-automaton-characteristics 189,6347
+(defmethod show-automaton-characteristics 192,6493
+(defmethod show-automaton-characteristics 195,6650
+(defmethod check-states-integrity 202,6971
+(defmethod right-handsides 208,7155
+(defmethod automaton-emptiness 211,7262
+(defparameter *save-automata* 216,7469
+(defmethod save-the-automaton 218,7505
+(defmethod save-the-automaton 221,7612
+(defmethod index-states 233,7938
+(defun index-states-automata 239,8159
+(defgeneric rename-and-save 245,8321
+(defmethod rename-and-save 247,8368
+
+boolean-combination.lisp,166
+(defun b-not 3,26
+(defun b-or 4,63
+(defun b-and 5,121
+(defun make-h-1-fun-tab 7,193
+(defun make-h-1-alist 13,348
+(defun make-h-alist 28,771
+(defun hbv 49,1225
+
+boolean-op-automaton.lisp,238
+(defun complement-automaton-name 3,26
+(defmethod ncomplement-automaton 7,133
+(defgeneric complement-automaton 16,486
+(defmethod complement-automaton 18,533
+(defmethod inclusion-automaton 25,893
+(defmethod equality-automaton 32,1223
+
+bprime-automate.lisp,135
+(defun redex-transitions 3,26
+(defun reducible-transitions 20,408
+(defun make-b-automaton 32,700
+(defun  place-r-for-arity 50,1429
+
+bvstate.lisp,386
+(defvar *states-vector*)3,26
+(defvar *states-vector-len*)4,51
+(defgeneric expand-bv 6,81
+(defmethod expand-bv 9,208
+(defmethod create-state-vector 15,372
+(defun set-states-vector 19,570
+(defmacro with-states-vector 23,706
+(defun make-empty-bv 28,879
+(defmethod states-to-bv 31,959
+(defmethod istate-to-bv 43,1352
+(defgeneric empty-bv-p 48,1455
+(defmethod empty-bv-p 51,1550
+
+com-approximation.lisp,152
+(defmacro update-approximation 3,26
+(defun wn-inclusion 9,210
+(defun approx-closed 27,839
+(defun arbitrary 32,1023
+(defun approx-arbitrary 56,1734
+
+com-automaton.lisp,275
+(defun get-automaton 3,26
+(defun get-tautomaton 6,99
+(defgeneric set-current-automaton 9,174
+(defmethod set-current-automaton 11,222
+(defun set-current-tautomaton 15,354
+(defun list-automata 19,466
+(defgeneric automaton-empty 22,532
+(defmethod automaton-empty 24,574
+
+completion.lisp,372
+(defun suggest-arg 3,26
+(define-presentation-method accept 9,248
+(define-presentation-type spec 33,945
+(define-presentation-method accept 36,1007
+(define-presentation-method accept 55,1538
+(define-presentation-method accept 70,2063
+(define-presentation-method accept 85,2593
+(define-presentation-method accept 101,3091
+(define-presentation-method accept 116,3600
+
+com-reduction.lisp,67
+(defun reduction-step 3,26
+(defun parallel-reduction-step 15,355
+
+com-term.lisp,132
+(defun normalizable 2,25
+(defmacro term-check-property 19,687
+(defun term-needed-redexes 27,915
+(defun set-current-term 40,1333
+
+com-termset.lisp,145
+(defun list-termsets 3,26
+(defun accessibility 6,92
+(defun set-current-termset 20,734
+(defun get-termset 24,831
+(defun build-termset 27,902
+
+com-trs.lisp,562
+(defmacro trs-check-property 3,26
+(defun display-sequential 13,299
+(defun display-sequentiality-results 22,508
+(defun try-to-check-seq-with-properties 28,771
+(defun trs-check-collapsing 36,983
+(defun trs-check-constructor 45,1282
+(defun trs-check-forward-branching 54,1604
+(defmethod salinier 65,1977
+(defun trs-check-orthogonal 69,2103
+(defun trs-check-growing 75,2345
+(defun trs-check-overlapping 80,2515
+(defun list-trss 89,2828
+(defun set-current-trs 92,2886
+(defun seqsys-from-rules 96,2963
+(defun nf-empty 99,3060
+(defun enf-empty 108,3323
+
+container.lisp,2303
+(defvar *debug* 2,25
+(defgeneric contents 4,45
+(defclass container 6,80
+(defclass ordered-container 10,218
+(defmethod contents 12,263
+(defmethod contents 16,410
+(defmethod print-object 18,457
+(defmethod print-object 21,552
+(defgeneric make-container 26,702
+(defmethod make-container 28,751
+(defmethod make-ordered-container 37,1055
+(defun make-empty-ordered-container 48,1492
+(defun make-empty-container 51,1585
+(defmethod make-container-from-state 54,1652
+(defmethod make-container-from-state 57,1750
+(defmethod compare-object 60,1873
+(defmethod compare-object 67,2177
+(defun container-p 73,2419
+(defun ordered-container-p 74,2464
+(defgeneric container-member 76,2526
+(defgeneric container-size 77,2574
+(defmethod container-size 79,2615
+(defmethod container-member 82,2699
+(defmethod container-member 85,2855
+(defgeneric container-adjoin 88,2984
+(defmethod container-adjoin 90,3033
+(defmethod container-adjoin 95,3224
+(defgeneric empty-container-p 99,3373
+(defmethod empty-container-p 101,3417
+(defgeneric empty-container-p 104,3502
+(defmethod empty-container-p 106,3546
+(defgeneric singleton-container-p 109,3631
+(defmethod singleton-container-p 111,3679
+(defgeneric merge-containers 115,3821
+(defmethod merge-containers 117,3865
+(defmethod container-difference 122,4006
+(defmethod container-difference 126,4194
+(defmethod container-difference 132,4425
+(defmethod container-difference 138,4593
+(defmethod container-difference 144,4761
+(defmethod container-intersection 149,4897
+(defmethod container-intersection 154,5099
+(defmethod container-intersection 160,5333
+(defmethod container-intersection 165,5490
+(defmethod container-intersection 170,5647
+(defmethod container-union 175,5785
+(defmethod container-union 180,5973
+(defmethod container-union 184,6083
+(defmethod container-nunion 190,6304
+(defmethod container-nunion 194,6513
+(defmethod container-subset-p 198,6690
+(defmethod container-equal-p 201,6837
+(defmethod container-singleton-p 206,7016
+(defmethod containers-product 209,7111
+(defmethod container-remove 212,7216
+(defmethod container-remove 216,7376
+(defmethod container-remove-if-not 220,7590
+(defmethod container-remove-if 226,7761
+(defmethod container-remove-if-not 232,7924
+(defmethod find-casted-state-from-state 237,8082
+
+context.lisp,2190
+(defgeneric get-lhs 3,26
+(defgeneric get-extra 6,91
+(defgeneric seqsys-merge-signature 9,173
+(defgeneric seqsys-signature 12,286
+(defgeneric seqsys-aut-nf 15,354
+(defgeneric seqsys-aut-nf-extra 18,450
+(defgeneric seqsys-aut-nf-bullet-extra 21,534
+(defgeneric seqsys-aut-nf-bullet 24,625
+(defgeneric seqsys-aut-u 28,733
+(defgeneric seqsys-aut-u-t 31,841
+(defgeneric seqsys-aut-t 34,947
+(defgeneric seqsys-aut-b 37,1047
+(defgeneric seqsys-aut-c 41,1185
+(defgeneric seqsys-aut-c-t 44,1297
+(defgeneric seqsys-aut-d 47,1396
+(defgeneric seqsys-aut-d-ndet 50,1525
+(defgeneric seqsys-aut-d-det 53,1650
+(defgeneric seqsys-aut-d-extra 56,1769
+(defgeneric seqsys-aut-d-extra-ndet 59,1898
+(defgeneric seqsys-aut-d-extra-det 62,2023
+(defgeneric get-approx-rules 65,2146
+(defgeneric (setf 68,2231
+(defclass seqsys 71,2328
+(defmethod make-seqsys 106,3577
+(defmethod make-seqsys-from-trs 116,3909
+(defmethod (setf 119,4025
+(defgeneric trim-automaton-name 170,5212
+(defmethod trim-automaton-name 172,5263
+(defgeneric trim-automaton-name-extra 176,5403
+(defmethod trim-automaton-name-extra 177,5454
+(defun trim-automaton-name-bullet 180,5561
+(defmethod seqsys-change-approx 184,5700
+(defun u-slot 225,6881
+(defmethod seqsys-aut-u 230,6950
+(defmethod seqsys-aut-u-t 244,7348
+(defun nf-slot 254,7613
+(defmethod seqsys-aut-nf 263,7763
+(defmethod seqsys-aut-nf-extra 278,8199
+(defmethod seqsys-aut-nf-bullet 281,8278
+(defmethod seqsys-aut-nf-bullet-extra 284,8359
+(defmethod seqsys-aut-t 287,8455
+(defmethod seqsys-change-aut-t 291,8592
+(defun b-slot 297,8754
+(defmethod seqsys-aut-b 302,8823
+(defun c-slot 314,9096
+(defmethod seqsys-aut-c 335,9599
+(defmethod seqsys-aut-c-t 357,10560
+(defun d-slot 367,10852
+(defmethod seqsys-aut-d 384,11217
+(defmethod seqsys-aut-d-extra-ndet 406,12028
+(defmethod seqsys-aut-d-extra-det 409,12166
+(defmethod seqsys-aut-d-partial 412,12284
+(defmethod seqsys-aut-d-extra 416,12453
+(defmethod seqsys-aut-d-ndet 419,12613
+(defmethod seqsys-aut-d-det 422,12760
+(defmethod get-approx-rules 425,12887
+(defmethod seqsys-merge-signature 430,13077
+(defmethod seqsys-normal-form 464,14023
+(defmacro with-left-linearity 467,14124
+
+cprojection.lisp,129
+(defmethod cprojection 3,26
+(defmethod cprojection 6,91
+(defmethod cprojection 9,185
+(defmethod cprojection-automaton 12,288
+
+dag-table.lisp,1527
+(defun casted-state-or-container-p 3,26
+(defun make-empty-dag-table 6,132
+(defmethod dag-table-access 9,196
+(defmethod dag-table-set 17,421
+(defmethod dag-table-set 20,502
+(defmethod dag-table-list 34,984
+(defmethod dag-table-number-of-transitions 51,1485
+(defmethod dag-table-copy 65,1813
+(defmethod dag-table-copy 68,1874
+(defmethod dag-table-copy 71,1940
+(defmethod dag-table-union 79,2161
+(defmethod dag-table-union 82,2241
+(defmethod apply-states-mapping 91,2537
+(defmethod dag-table-cright-handsides 105,3027
+(defmethod dag-table-key-value-list 121,3459
+(defmethod dag-table-show 128,3633
+(defmethod dag-table-filter-with-states 142,4003
+(defmethod dag-table-new-marked 159,4560
+(defmethod dag-table-tuples-rh 174,5027
+(defmethod dag-table-things-from 187,5396
+(defmethod dag-table-get-states-from 198,5778
+(defmethod dag-table-tuples-rh 213,6245
+(defmethod dag-table-tuples-from 218,6401
+(defmethod dag-table-uncommutative 223,6575
+(defmethod dag-table-uncommutative 226,6651
+(defmethod dag-table-uncommutative 229,6732
+(defmethod dag-table-to-commutative 242,7178
+(defmethod dag-table-deterministic-p 251,7466
+(defmethod  dag-table-deterministic-p 254,7548
+(defmethod dag-table-dead-end-state-p 263,7789
+(defgeneric dag-table-equiv-mod-classes 277,8151
+(defmethod dag-table-equiv-mod-classes 279,8203
+(defmethod dag-table-equiv-mod-classes 282,8282
+(defmethod dag-table-equiv-mod-classes 285,8365
+(defmethod dag-table-equiv-mod-classes 288,8448
+(defmethod dag-table-product 302,8928
+
+dautomate.lisp,514
+(defvar *det-aut-c* 2,25
+(defun cstates 4,49
+(defun make-d-transitions-for-constants 7,124
+(defun create-prh 22,674
+(defun adapt-p-when-redex 32,901
+(defun p1rh 39,1044
+(defun transform-rhap 51,1462
+(defun rhs-avec-un-p 61,1748
+(defun expand 76,2256
+(defun new-p-rh 93,2665
+(defun create-transitions 112,3318
+(defun gen-d-transitions 117,3472
+(defun adapt-d-transitions-for-one-symbol 129,3907
+(defun adapt-d-transitions 136,4155
+(defun make-d-transitions 152,4634
+(defun make-d-automaton 167,5345
+
+det-dautomate.lisp,36
+(defun det-create-transitions 3,26
+
+determinize.lisp,83
+(defmethod deterministic-automaton-p 3,26
+(defmethod determinize-automaton 6,146
+
+dstate.lisp,509
+(defvar *st-reducible* 3,26
+(defvar *cstates* 4,54
+(defvar *st-redex* 5,77
+(defclass dstate 7,102
+(defun init-dstates 15,388
+(defun make-b-comp 19,510
+(defun make-s-comp 25,669
+(defun make-p-comp 32,879
+(defun make-dstate 38,1053
+(defmethod print-object 46,1333
+(defmethod compare-object 55,1616
+(defmethod b-comp 61,1770
+(defmethod s-comp 64,1842
+(defmethod p-comp 67,1914
+(defun are-finalstates 70,1986
+(defun bc-redex-p 75,2103
+(defun is-final-state-d 78,2164
+(defun b-projection 88,2410
+
+duplicate-automaton.lisp,271
+(defmethod create-states-mapping 8,184
+(defmethod duplicate-states 15,444
+(defmethod duplicate-state 19,573
+(defvar *skim* 52,2057
+(defgeneric skim-state 54,2076
+(defgeneric nskim-automaton 56,2109
+(defmethod skim-state 58,2151
+(defmethod nskim-automaton 61,2270
+
+epsilon.lisp,328
+(defgeneric epsilon-closure 4,101
+(defgeneric epsilon-closure-automaton 8,237
+(defmethod epsilon-p 12,387
+(defmethod nepsilon-closure-automaton 15,464
+(defmethod epsilon-closure-automaton 21,665
+(defun epsilon-transition-p 26,824
+(defmethod expand-epsilon-transition 29,913
+(defmethod expand-epsilon-transitions 36,1206
+
+equivalence-classes.lisp,478
+(defvar *eqclasses*)6,136
+(defvar *eqindex*)7,157
+(defmethod set-eqclass 9,177
+(defmethod add-eqclass 13,295
+(defun in-the-same-eqclass 18,438
+(defmethod possibly-equivalent-to-class 31,838
+(defun print-eqclasses 41,1167
+(defgeneric partition-eqclass 48,1380
+(defmethod partition-eqclass 51,1456
+(defgeneric refine-partition 70,2212
+(defmethod refine-partition 73,2331
+(defmethod compute-equivalence-classes 84,2706
+(defmethod equivalence-classes-automaton 94,3194
+
+file-commands.lisp,190
+(defun filename-completer 31,1206
+(define-presentation-method accept 103,4155
+(defun filepath-filename 116,4616
+(defun directory-pathname-p 133,5227
+(defun directory-of-buffer 172,6814
+
+file-path.lisp,142
+(defvar *data-relative-directory* 2,25
+(defun default-directory 4,69
+(defun initial-data-directory 14,460
+(defvar *data-directory* 22,647
+
+flat-term-state.lisp,251
+(defun make-flat-term 3,26
+(defgeneric flat-term-from-key 7,143
+(defgeneric flat-term-to-key 10,268
+(defmethod flat-term-from-key 13,368
+(defmethod flat-term-from-key 16,425
+(defmethod flat-term-to-key 19,509
+(defmethod flat-term-to-key 22,564
+
+fly-automaton.lisp,1781
+(defclass fly-automaton 3,26
+(defclass fly-cast-automaton 8,268
+(defclass fly-casting-automaton 9,317
+(defclass fly-table-automaton 10,374
+(defmethod casted-p 12,430
+(defmethod casted-p 13,475
+(defmethod casted-p 14,520
+(defmethod final-state-p 16,569
+(defmethod puits-state-p 20,772
+(defun make-fly-automaton23,908
+(defgeneric cast-fly-automaton 50,1578
+(defmethod cast-fly-automaton 52,1615
+(defmethod cast-fly-automaton 62,1909
+(defgeneric cast-automaton 65,1970
+(defmethod cast-automaton 67,2003
+(defmethod cast-automaton 69,2055
+(defmethod cast-automaton 71,2110
+(defmethod reduced-p 74,2183
+(defmethod complement-final-state-fun 77,2275
+(defmethod complement-puits-state-fun 83,2441
+(defmethod det-final-state-fun 89,2588
+(defmethod determinize-automaton 98,2809
+(defmethod identical-final-state-fun 110,3191
+(defmethod identical-puits-state-fun 114,3302
+(defmethod complete-automaton 118,3413
+(defmethod complement-automaton 122,3515
+(defmethod product-automaton 131,3814
+(defmethod product-automaton-gen 140,4264
+(defmethod and-finalpstate-fun 151,4761
+(defmethod and-finalpstate-fun-gen 159,4998
+(defmethod or-finalpstate-fun-gen 168,5201
+(defmethod or-finalpstate-fun 177,5399
+(defmethod intersection-automaton-compatible 185,5635
+(defmethod intersection-automaton-compatible-gen 192,5910
+(defmethod union-automaton 202,6315
+(defmethod union-automaton-compatible-gen 211,6636
+(defmethod add-empty-symbol 219,6952
+(defmethod duplicate-automaton 225,7136
+(defmethod apply-signature-mapping 235,7550
+(defmethod nreduce-automaton 246,8038
+(defmethod nautomaton-without-symbols 249,8117
+(defmethod simplify-automaton 253,8321
+(defmethod rename-and-cast 256,8393
+(defmethod rename-and-cast 259,8486
+(defmethod index-states 262,8596
+
+fly-to-table.lisp,608
+(defun add-fly 2,25
+(defun add-tb 5,78
+(defun trim-tb 8,129
+(defun add-casted 11,174
+(defun trim-fly 14,233
+(defun trim-casted 17,279
+(defmethod compute-constant-transitions 20,340
+(defmethod add-transitions-for-one-symbol 35,798
+(defmethod add-transitions 55,1303
+(defmethod compute-transitions 68,1761
+(defmethod fly-to-table-automaton 86,2297
+(defmethod compute-all-transitions 90,2521
+(defmethod fly-to-table-automaton 98,2795
+(defmethod fly-to-table-automaton 120,3550
+(defmethod fly-to-table-automaton 123,3672
+(defmethod to-fly-automaton 126,3750
+(defmethod to-fly-automaton 129,3852
+
+fly-transitions.lisp,514
+(defclass fly-transitions 3,26
+(defclass fly-cast-transitions 8,236
+(defclass fly-table-transitions 10,314
+(defclass fly-casting-transitions 12,375
+(defmethod index-fly-transitions 14,437
+(defmethod transitions-fun 19,606
+(defmethod transitions-fun 30,887
+(defun make-fly-transitions 39,1242
+(defmethod make-p-target 50,1608
+(defmethod product-transitions-fun56,1771
+(defmethod product-transitions-fun-gen 72,2335
+(defmethod apply-signature-mapping-fun 91,2993
+(defmethod det-transitions-fun 108,3543
+
+forward-branching.lisp,269
+(defgeneric forward-branching-def 2,25
+(define-condition not-fb 5,185
+(define-condition not-ss 6,217
+(define-condition overlapp 7,249
+(defun subscheme-p 9,284
+(defun blocage 12,351
+(defmethod forward-branching-def 17,534
+(defmethod forward-branching-def 29,954
+
+gautowrite.lisp,29
+(defpackage :gautowrite3,32
+
+gd-automate.lisp,133
+(defun g-create-transitions 2,25
+(defun g-adapt-p-when-redex 9,207
+(defun g-transform-rhap 18,413
+(defun flatten-and-sort 25,592
+
+generation.lisp,128
+(defun gen-terms-depth 3,26
+(defun gen-terms-with-symbol 9,276
+(defun gen-terms 14,390
+(defun gen-normal-forms-depth 17,516
+
+globals.lisp,74
+(defvar *output-stream* 3,26
+(defmacro avec-temps-to-output-stream 5,70
+
+gsaturation.lisp,440
+(defvar *u-states*)3,26
+(defmethod make-q 5,68
+(defmethod make-q-containers 15,374
+(defmethod make-q-args 21,536
+(defmethod add-transitions-for-theta28,707
+(defmethod add-transitions-for-theta43,1075
+(defmethod add-transitions-for-lh49,1319
+(defmethod make-theta-state-list 62,1641
+(defmethod add-transitions-for-rule 78,2118
+(defmethod add-transitions-for-rules84,2323
+(defun nsaturation 93,2549
+(defmethod saturation 104,2851
+
+gstate.lisp,211
+(defclass gstate 3,26
+(defmethod print-object 6,107
+(defmethod make-gstate 9,202
+(defmethod make-gstate 16,394
+(defmethod make-gstate 19,498
+(defmethod make-gstate 22,619
+(defmethod compare-object 25,666
+
+hvmodification.lisp,133
+(defgeneric hvmodification 3,26
+(defmethod hvmodification 7,152
+(defmethod hvmodification 10,222
+(defmethod hvmodification17,419
+
+index-point.lisp,1663
+(defvar *initial-index-point* 2,25
+(defvar *index-point-number* 3,60
+(defclass occurrence 6,182
+(defclass especial-occurrence 8,211
+(defmethod print-object 11,333
+(defclass normal-occurrence 14,432
+(defclass omega 18,579
+(defgeneric make-index-point 22,716
+(defgeneric delta 26,883
+(defgeneric initial-index-point-p 29,1027
+(defgeneric any-index 32,1142
+(defgeneric transition-symbols 35,1252
+(defgeneric given-index 38,1400
+(defgeneric eject 41,1504
+(defgeneric extend-omegas 44,1646
+(defgeneric compute-failure-transition 47,1848
+(defgeneric forward 50,1959
+(defgeneric forward-branching-index-tree 53,2076
+(defmethod print-object 56,2245
+(defmethod print-object 59,2326
+(defun make-occurrence 64,2461
+(defun make-omega 67,2566
+(defun make-especial-occurrence 70,2647
+(defclass index-point 73,2744
+(defmethod make-index-point 87,3434
+(defmethod print-object 97,3738
+(defmethod show 102,3919
+(defun trivial-index-point 112,4282
+(defmethod delta 122,4621
+(defmethod initial-index-point-p 125,4724
+(defmethod initial-index-point-p 128,4808
+(defmethod phi 131,4863
+(defun check-directions 134,4902
+(defun match-scheme 138,5002
+(defgeneric possible-positions 143,5145
+(defmethod possible-positions 145,5203
+(defmethod any-index 154,5446
+(defmethod given-index 157,5534
+(defmethod transition-symbols 166,5754
+(defmethod eject 172,5941
+(defun duplicate-omegas-except-index 176,6088
+(defmethod extend-omegas 182,6274
+(defmethod compute-failure-transition 193,6820
+(defmethod forward 204,7112
+(defun retrieve-scheme 218,7589
+(defmethod forward-branching-index-tree 221,7670
+(defmethod forward-branching-index-tree 226,7881
+
+index-tree.lisp,348
+(defmethod make-transition 3,27
+(defclass index-tree 6,138
+(defmethod show 12,348
+(defgeneric transition-from-delta-pair 15,482
+(defmethod transition-from-delta-pair 17,529
+(defgeneric transitions-from-index-point 23,701
+(defmethod transitions-from-index-point 26,827
+(defgeneric make-index-tree 33,1046
+(defmethod make-index-tree 36,1143
+
+init-autowrite.lisp,28
+(defun init-autowrite 3,26
+
+input.lisp,378
+(define-condition error-not-ground 3,26
+(define-condition error-incorrect-signature 4,68
+(define-condition error-read 5,119
+(defun load-file-from-absolute-filename 7,156
+(defun absolute-filename 15,430
+(defun read-termset 18,518
+(defun read-term 28,830
+(defun read-rules 43,1283
+(defun read-transitions 52,1572
+(defun read-automaton 61,1885
+(defun input-term 70,2167
+
+integration.lisp,210
+(defparameter *approximation* 2,25
+(defun u-automaton 4,80
+(defun make-u-automaton 8,236
+(defmethod nfold-constant-states 16,556
+(defun ndet-saturation-c-automaton 36,1196
+(defun make-c-automaton 51,1679
+
+interface.lisp,7461
+(defconstant +largeur-texte+ 27,978
+(defvar *processname-pane*)28,1038
+(defvar *jacquemard* 29,1066
+(defun run-test 31,1143
+(defun gautowrite 38,1341
+(defun algo-name 230,9492
+(defun process-name 237,9619
+(defmethod display-processname 244,9750
+(define-application-frame autowrite 255,10106
+(define-condition all-errors 355,12605
+(defmethod default-frame-top-level 358,12649
+(defun check-trs 387,13732
+(defun check-automaton 391,13822
+(defun check-tautomaton 395,13930
+(defun check-termset 399,14041
+(defun check-term 403,14143
+(defun check-for-reduction 407,14236
+(define-autowrite-command (com-toggle-limit-transitions 413,14466
+(define-autowrite-command (com-show-data-directory 417,14590
+(define-autowrite-command (com-change-data-directory 420,14724
+(define-autowrite-command (com-default-data-directory 432,15240
+(define-autowrite-command (com-load-spec 436,15428
+(define-autowrite-command (com-save-spec 449,15771
+(define-autowrite-command (com-save-spec-readable 458,16139
+(define-autowrite-command (com-retrieve-spec 465,16394
+(define-autowrite-command (com-load-trs-spec 472,16569
+(define-autowrite-command (com-load-aut-spec 485,16979
+(define-autowrite-command (com-show-signature 498,17389
+(define-autowrite-command (com-show-variables 502,17539
+(define-autowrite-command (com-load-trs 508,17753
+(define-autowrite-command (com-read-trs 520,18153
+(define-autowrite-command (com-retrieve-trs 530,18556
+(define-autowrite-command (com-clear-trs 538,18728
+(define-autowrite-command (com-quit 544,18878
+(define-autowrite-command (com-load-termset 548,18990
+(define-autowrite-command (com-read-termset 559,19338
+(define-autowrite-command (com-retrieve-termset 573,19692
+(define-autowrite-command (com-clear-termset 581,19893
+(define-autowrite-command (com-clear-term 584,19978
+(define-autowrite-command (com-retrieve-term 587,20057
+(define-autowrite-command (com-load-term 595,20231
+(define-autowrite-command (com-read-term 606,20543
+(define-autowrite-command (com-redexes 619,20921
+(define-autowrite-command (com-needed-redexes 629,21343
+(define-autowrite-command (com-needed-redexes-extra 633,21496
+(define-autowrite-command (com-normalizable 637,21663
+(define-autowrite-command (com-normalizable-extra 641,21806
+(define-autowrite-command (com-accessibility 645,21964
+(define-autowrite-command (com-needed-reduction-step 652,22223
+(define-autowrite-command (com-leftmost-outermost-step 656,22361
+(define-autowrite-command (com-parallel-outermost-step 660,22495
+(define-autowrite-command (com-needed-reduction-to-nf 664,22641
+(define-autowrite-command (com-reduction-to-nf 668,22783
+(define-autowrite-command (com-compute-target 672,22920
+(define-autowrite-command (com-compute-state 682,23246
+(define-autowrite-command (com-ground 693,23563
+(define-autowrite-command (com-leftlinearity 696,23646
+(define-autowrite-command (com-overlapping 699,23740
+(define-autowrite-command (com-orthogonal 702,23836
+(define-autowrite-command (com-growing 705,23930
+(define-autowrite-command (com-collapsing 708,24018
+(define-autowrite-command (com-constructor 711,24112
+(define-autowrite-command (com-forward-branching 714,24208
+(define-autowrite-command (com-forward-branching-def 717,24316
+(define-autowrite-command (com-fb-to-constructor 720,24435
+(define-autowrite-command (com-fb-to-constructor-bis 723,24537
+(define-autowrite-command (com-size-trs 726,24645
+(define-autowrite-command (com-arbitrary 733,24834
+(define-autowrite-command (com-call-by-need 736,24918
+(define-autowrite-command (com-call-by-need-extra 740,25073
+(define-autowrite-command (com-wn 744,25243
+(define-autowrite-command (com-wn-bullet 747,25316
+(define-autowrite-command (com-nf-empty 750,25406
+(define-autowrite-command (com-enf-empty 753,25481
+(define-autowrite-command (com-algo 756,25558
+(define-autowrite-command (com-init-algo 761,25743
+(define-autowrite-command (com-approximation-strong 770,26110
+(define-autowrite-command (com-approximation-nv 774,26257
+(define-autowrite-command (com-approximation-growing 778,26396
+(define-autowrite-command (com-approximation-linear-growing 782,26545
+(define-autowrite-command (com-clear 786,26708
+(define-autowrite-command (com-stop 789,26792
+(define-autowrite-command (com-recognize-term 795,26965
+(define-autowrite-command (com-trecognize-term 812,27632
+(define-autowrite-command (com-tintersection 829,28304
+(define-autowrite-command (com-tunion 834,28492
+(define-autowrite-command (com-tcompute-state 839,28666
+(define-autowrite-command (com-tcompute-target 854,29281
+(define-autowrite-command (com-load-automaton 869,29897
+(define-autowrite-command (com-add-automaton-to-tautomaton 881,30306
+(define-autowrite-command (com-show-automaton 886,30539
+(define-autowrite-command (com-show-automaton-signature 891,30705
+(define-autowrite-command (com-number-states 895,30870
+(define-autowrite-command (com-name-states 900,31028
+(define-autowrite-command (com-retrieve-automaton 905,31182
+(define-autowrite-command (com-rename-automaton 915,31440
+(define-autowrite-command (com-rename-tautomaton 927,31817
+(define-autowrite-command (com-retrieve-tautomaton 939,32203
+(define-autowrite-command (com-is-empty 948,32463
+(define-autowrite-command (com-is-deterministic 952,32586
+(define-autowrite-command (com-is-minimal 958,32813
+(define-autowrite-command (com-is-simplified 966,33147
+(define-autowrite-command (com-equivalence-classes 974,33490
+(define-autowrite-command (com-is-complete 984,33878
+(define-autowrite-command (com-intersect-automaton 990,34090
+(define-autowrite-command (com-inclusion-automaton 998,34369
+(define-autowrite-command (com-equality-automaton 1015,34924
+(define-autowrite-command (com-empty-intersection 1031,35462
+(define-autowrite-command (com-union-automaton 1049,35970
+(define-autowrite-command (com-complement-automaton 1059,36274
+(define-autowrite-command (com-complete-automaton 1063,36393
+(define-autowrite-command (com-nf-automaton 1069,36622
+(define-autowrite-command (com-nf-bullet-automaton 1074,36795
+(define-autowrite-command (com-redex-automaton 1079,36982
+(define-autowrite-command (com-reducible-automaton 1086,37202
+(define-autowrite-command (com-automaton-c-nf 1093,37432
+(define-autowrite-command (com-automaton-c-nf-bullet 1097,37587
+(define-autowrite-command (com-automaton-c-nf-bullet-extra 1100,37735
+(define-autowrite-command (com-automaton-c-s 1104,37907
+(define-autowrite-command (com-automaton-c-a 1109,38109
+(define-autowrite-command (com-automaton-d-extra 1113,38275
+(define-autowrite-command (com-automaton-d 1119,38447
+(define-autowrite-command (com-automaton-d-extra-partial 1123,38600
+(define-autowrite-command (com-automaton-d-partial 1127,38786
+(define-autowrite-command (com-termset-automaton 1131,38958
+(define-autowrite-command (com-reduce-automaton 1136,39140
+(define-autowrite-command (com-duplicate-automaton 1143,39365
+(define-autowrite-command (com-determinize-automaton 1150,39617
+(define-autowrite-command (com-minimize-automaton 1157,39864
+(define-autowrite-command (com-simplify-automaton 1167,40243
+(define-autowrite-command (com-epsilon-closure 1174,40478
+(define-autowrite-command (com-save-automaton 1180,40678
+(define-autowrite-command (com-clear-automaton 1187,40899
+(define-autowrite-command (com-clear-all 1191,41022
+(define-autowrite-command (com-terminating-trs 1194,41129
+(define-autowrite-command (com-inverse-trs 1206,41687
+
+interface-variables.lisp,174
+(defvar *term-pane* 3,26
+(defvar *termset-pane* 4,51
+(defvar *trs-pane* 5,79
+(defvar *approx-pane* 6,103
+(defvar *automaton-pane* 7,130
+(defvar *tautomaton-pane* 8,160
+
+internal-var.lisp,193
+(defvar *internal-var-number* 3,26
+(defclass internal-var 5,60
+(defun make-internal-var 8,158
+(defmethod print-object 11,267
+(defmethod compare-object 14,361
+(defun internal-var-p 18,495
+
+intersection-emptyness.lisp,40
+(defmethod intersection-emptiness 3,26
+
+intersection.lisp,247
+(defmethod intersection-automaton-compatible 16,326
+(defmethod intersection-automaton-compatible19,492
+(defmethod intersection-automaton-compatible 25,689
+(defmethod intersection-automaton 29,833
+(defmethod intersection-automaton-gen 40,1375
+
+jeu-de-tests.lisp,303
+(defgeneric verify-automaton 2,25
+(defmethod verify-automaton 4,79
+(defun test-nv-jacquemard 11,360
+(defun test-nv-toyama 22,933
+(defun test-nv 31,1279
+(defun test-g-toyama 39,1492
+(defun test-g 47,1792
+(defun test-call-by-need 53,1978
+(defun test-automata 57,2031
+(defun jeu-de-tests 87,3153
+
+lexer.lisp,732
+(defclass kwd 3,26
+(defun make-keyword 5,60
+(defmethod print-object 8,125
+(defclass sym 11,215
+(defclass vbits 13,249
+(defmethod print-object 15,310
+(defclass separator 18,407
+(defparameter +sep-open-par+ 20,447
+(defparameter +sep-closed-par+ 21,514
+(defparameter +sep-colon+ 22,583
+(defparameter +sep-arrow+ 23,647
+(defparameter +sep-comma+ 24,712
+(defparameter +sep-open-bracket+ 25,776
+(defparameter +sep-closed-bracket+ 26,847
+(defparameter +sep-open-sbracket+ 27,920
+(defparameter +sep-closed-sbracket+ 28,992
+(defparameter +sep-hat+ 29,1066
+(defvar *keywords* 31,1129
+(defun lex 38,1320
+(defmethod print-object 95,3812
+(defmethod print-object 98,3902
+(defun lex-file 101,4004
+(defun lex-stream 105,4126
+
+minimization.lisp,333
+(defgeneric minimal-automaton-p 3,26
+(defmethod minimal-automaton-p 6,122
+(defgeneric nminimize-automaton 10,347
+(defgeneric minimize-automaton 13,446
+(defmethod quasi-simplified-p 17,593
+(defmethod simplified-p 25,794
+(defmethod minimal-p 30,961
+(defmethod nminimize-automaton 35,1058
+(defmethod minimize-automaton 41,1238
+
+needed-redex.lisp,332
+(defgeneric needed-redex-position-p 3,26
+(defgeneric needed-redex-positions 6,156
+(defgeneric redex-positions 9,373
+(defgeneric outermost-redex-positions 12,508
+(defmethod needed-redex-position-p 15,663
+(defmethod needed-redex-positions 18,835
+(defmethod redex-positions 25,1094
+(defmethod outermost-redex-positions 28,1195
+
+nfautomate.lisp,308
+(defun new-terms 3,26
+(defun close-under-down-arrow 10,189
+(defun unify-prefix 16,328
+(defun unify-prefix-arg 30,662
+(defun max-prefix 43,983
+(defun unify-with-a-prefix 50,1150
+(defun make-nf-transitions-for-one-symbol 59,1358
+(defmethod make-nf-transitions 76,1850
+(defun make-nf-automaton 85,2154
+
+nlsaturation.lisp,485
+(defmethod make-new-rh 4,71
+(defun gmatch 23,774
+(defmethod update-rhs-deltatransition-with-rule 32,988
+(defmethod update-rhs-deltatransition-with-rules44,1451
+(defmethod update-deltatransitions-with-rules 58,1881
+(defmethod new-add-deltatransitions 74,2428
+(defmethod adapt-deltatransitions 92,2855
+(defmethod add-deltatransitions-for-constants 103,3354
+(defmethod delta-transitions 116,3820
+(defmethod final-det-states 128,4393
+(defmethod det-saturation-automaton135,4636
+
+output.lisp,34
+(defun write-object-to-file 3,26
+
+package.lisp,29
+(defpackage :nautowrite3,32
+
+parser.lisp,3333
+(define-condition autowrite-parse-error 40,1595
+(define-condition my-keyword-expected-error 44,1744
+(define-condition symbol-or-string-expected-error 46,1817
+(define-condition integer-expected-error 47,1895
+(define-condition colon-expected-error 48,1964
+(define-condition comma-expected-error 49,2031
+(define-condition arrow-expected-error 50,2098
+(define-condition closed-par-expected-error 51,2165
+(define-condition closed-bracket-expected-error 52,2237
+(define-condition open-sbracket-expected-error 53,2313
+(define-condition closed-sbracket-expected-error 54,2388
+(define-condition string-expected-error 55,2465
+(define-condition name-expected-error 56,2533
+(define-condition flat-term-expected-error 57,2599
+(define-condition arity-error 58,2670
+(define-condition heterogeneous-states-error 59,2728
+(defvar *vars* 61,2802
+(defvar *symbols* 62,2841
+(defvar *automata* 63,2887
+(defvar *current-token* 65,2931
+(defvar *previous-token* 66,2960
+(defvar *add-symbols* 67,2990
+(defun init-parser 69,3018
+(defmacro lexmem 76,3162
+(defun my-keyword-p 82,3307
+(defun integer-p 86,3430
+(defun sym-p 89,3483
+(defun symbol-or-string-p 92,3539
+(defun vbits-p 96,3617
+(defun separator-p 99,3677
+(defun keyword-p 102,3739
+(defun keyword-or-separator-p 105,3799
+(defun token-or-name 108,3867
+(defun signal-autowrite-error 113,3962
+(defun scan-int 119,4222
+(defun parse-int 124,4387
+(defun parse-colon 128,4453
+(defun parse-comma 132,4593
+(defun parse-string 136,4733
+(defun parse-arrow 141,4891
+(defun parse-closed-par 145,5031
+(defun parse-closed-bracket 151,5291
+(defun scan-name 157,5563
+(defun scan-memorized-name 165,5828
+(defun parse-name 171,6019
+(defun parse-memorized-name 175,6087
+(defun bits-from-chars 179,6175
+(defun scan-declaration 184,6299
+(defun parse-declaration 206,7030
+(defun parse-symbols 210,7112
+(defun parse-var 219,7378
+(defun parse-vars 222,7448
+(defun parse-arglist 229,7603
+(defun scan-term 237,7825
+(defun parse-term 267,8673
+(defun scan-termset 271,8741
+(defun parse-termset 277,8898
+(defun parse-named-termset 281,8972
+(defvar *warn-already-defined-state* 291,9389
+(defun scan-name-state 293,9430
+(defun parse-name-state 304,9774
+(defun scan-pstate 308,9855
+(defun scan-state 315,10153
+(defun parse-state 322,10384
+(defun check-arity 326,10454
+(defun scan-flat-term 333,10771
+(defun parse-flat-term 350,11316
+(defun same-type-of-states-p 354,11394
+(defun check-states 361,11567
+(defun scan-states 365,11726
+(defun parse-states 376,12109
+(defun parse-transition 381,12262
+(defun scan-transitions 387,12465
+(defun parse-transitions 394,12624
+(defun parse-description 399,12792
+(defun parse-descriptions 406,12934
+(defun scan-automaton 412,13127
+(defun parse-automaton 440,14053
+(defun parse-autname 444,14131
+(defun scan-autname 448,14224
+(defun scan-autnames 451,14276
+(defun parse-autnames 456,14429
+(defun parse-automata 460,14505
+(defun scan-tautomaton 465,14687
+(defun parse-tautomaton 483,15259
+(defun scan-rule 487,15339
+(defun parse-rule 493,15486
+(defun scan-rules 497,15554
+(defun parse-rules 502,15705
+(defun scan-trs 506,15775
+(defun parse-trs 513,15993
+(defun simple-spec 517,16059
+(defun parse-spec 526,16271
+(defun parse-trs-vars 558,17294
+(defun parse-trs-spec 571,17624
+(defun parse-aut-spec 580,17898
+
+presentations.lisp,132
+(define-presentation-type data-file-name 3,26
+(define-presentation-type automaton 4,94
+(define-presentation-method present 9,251
+
+processes.lisp,833
+(defun process-approx-arbitrary 3,26
+(defun process-wn-inclusion 11,219
+(defun process-determinize 16,404
+(defun process-reduce 19,489
+(defun process-complete 22,562
+(defun process-complement 25,638
+(defun process-automaton-d 28,725
+(defun process-automaton-c 42,1127
+(defun process-automaton-c-s 54,1430
+(defun process-automaton-c-a 59,1630
+(defun process-minimize 65,1841
+(defun process-simplify 68,1917
+(defun process-apply-reduction 71,1993
+(defun process-apply-reduction-nf 75,2109
+(defun process-normalizable 78,2236
+(defun process-term-needed-redexes 82,2410
+(defun process-accessibility 91,2671
+(defun process-sequentiality 96,2827
+(defun process-growing-terminating-trs 105,3106
+(defun process-inverse-growing-terminating-trs 116,3455
+(defun process-nf-empty 127,3828
+(defun process-enf-empty 132,3969
+
+process.lisp,236
+(defvar *with-processes* 3,26
+(defvar *aux-process* 4,56
+(defgeneric display-processname 6,84
+(defmethod display-processname 9,189
+(defmethod process-yield 12,261
+(defmacro in-process 15,319
+(defmacro in-process-with-time 31,667
+
+product.lisp,71
+(defmethod product-automaton 3,26
+(defmethod product-automaton 6,173
+
+quotient.lisp,118
+(defmethod representative-state 3,26
+(defmethod representative-states 10,220
+(defmethod nquotient-automaton 15,366
+
+rule.lisp,705
+(defgeneric left-handside 3,26
+(defgeneric right-handside 6,116
+(defgeneric left-linear 9,208
+(defgeneric growing 12,296
+(defgeneric inverse-rule 15,376
+(defclass rule 18,464
+(defun make-rule 22,580
+(defmethod print-object 25,645
+(defmethod compare-object 29,832
+(defmethod vars-of 37,1185
+(defun arbitrary-rule-p 42,1323
+(defun rule-closed-p 46,1466
+(defmethod left-linear 50,1581
+(defun vars-depth-greater-than-one 53,1652
+(defmethod growing 61,1828
+(defmethod symbols-from 71,2087
+(defun collapsing-rule-p 76,2223
+(defun standardize-rule 79,2289
+(defgeneric equivalent-rules-p 92,2679
+(defmethod equivalent-rules-p 95,2782
+(defmethod size 98,2911
+(defmethod inverse-rule 101,3016
+
+rules.lisp,1008
+(defvar *dsymbols* 3,26
+(defclass rules 5,51
+(defun make-rules 8,129
+(defmethod print-object 14,256
+(defun dsymbols 18,378
+(defgeneric right-handsides 21,459
+(defmethod right-handsides 25,586
+(defgeneric left-handsides 29,704
+(defmethod left-handsides 33,816
+(defgeneric rules-closed-p 36,906
+(defmethod rules-closed-p 39,1028
+(defmethod growing 42,1117
+(defmethod growing 45,1179
+(defgeneric collapsing-p 48,1247
+(defmethod collapsing-p 51,1341
+(defgeneric constructor-p 54,1434
+(defmethod constructor-p 57,1538
+(defgeneric nb-rules 66,1775
+(defmethod nb-rules 69,1852
+(defgeneric right-linear-rules-p 72,1920
+(defmethod right-linear-rules-p 75,2028
+(defmethod left-linear 78,2121
+(defgeneric included-rules-p 81,2205
+(defmethod included-rules-p 84,2350
+(defgeneric equiv-rules-p 91,2568
+(defmethod equiv-rules-p 94,2725
+(defmethod vars-of 100,2907
+(defmethod size 103,2975
+(defgeneric inverse-rules 106,3059
+(defmethod inverse-rules 109,3144
+(defmethod symbols-from 114,3249
+
+salinier.lisp,501
+(defun rank 3,26
+(defgeneric find-dt 8,114
+(defmethod find-dt 11,236
+(defgeneric transform-fb-rules 19,696
+(defgeneric rules-with-elimination 22,802
+(defmethod transform-fb-rules 25,902
+(defmethod rules-with-elimination 30,1089
+(defmethod rules-without-elimination 58,2044
+(defgeneric transform-fb 77,2830
+(defmethod transform-fb 80,2963
+(defmethod transform-fb 95,3524
+(defgeneric salinier 98,3642
+(defmethod salinier 101,3774
+(defmethod salinier 105,3896
+(defmethod salinier 108,4006
+
+signature-mapping.lisp,503
+(defgeneric apply-signature-mapping 3,26
+(defmethod apply-signature-mapping 5,73
+(defmethod injective-mapping-p 10,215
+(defmethod apply-signature-mapping 15,398
+(defmethod apply-signature-mapping 18,468
+(defmethod apply-signature-mapping 23,586
+(defmethod apply-signature-mapping 30,794
+(defmethod apply-signature-mapping 39,1063
+(defmethod apply-signature-mapping 42,1157
+(defmethod napply-signature-mapping 49,1403
+(defmethod apply-signature-mapping 57,1695
+(defun inverse-mapping 60,1823
+
+simple-table.lisp,1328
+(defun make-empty-simple-table 3,26
+(defmethod simple-table-set 6,96
+(defmethod simple-table-access 11,300
+(defmethod simple-table-access-modc 14,401
+(defmethod simple-table-set-modc 17,546
+(defmethod simple-table-add-modc 20,691
+(defmethod simple-table-list 24,895
+(defmethod simple-table-copy 34,1179
+(defmethod simple-table-number-of-transitions 42,1395
+(defmethod simple-table-cright-handsides 51,1623
+(defmethod  simple-table-deterministic-p 63,1945
+(defmethod simple-table-dead-end-state-p 72,2196
+(defmethod simple-table-filter-with-states 81,2483
+(defmethod simple-table-union 91,2861
+(defmethod simple-table-key-value-list 99,3152
+(defmethod simple-table-show 107,3353
+(defmethod simple-table-get-states-from 113,3550
+(defmethod intersection-two-transitions 126,3948
+(defmethod simple-table-intersection 141,4324
+(defmethod simple-table-epsilon-p 160,5028
+(defmethod simple-table-expand-epsilon-transition167,5266
+(defmethod simple-table-expand-epsilon-transitions 175,5579
+(defmethod simple-table-epsilon-closure 184,5879
+(defmethod simple-table-apply-signature-mapping 191,6187
+(defmethod simple-table-apply-states-mapping 207,6669
+(defmethod simple-table-uncommutative 219,7062
+(defmethod simple-table-to-commutative 238,7609
+(defmethod simple-table-possibly-equivalent-to-state 247,7910
+
+simple-transitions.lisp,977
+(defclass simple-transitions 3,26
+(defmethod make-empty-simple-transitions 5,74
+(defmethod make-simple-transitions 8,167
+(defmethod transitions-access 11,296
+(defmethod transitions-list 14,448
+(defmethod transition-set 17,567
+(defmethod number-of-transitions 20,718
+(defmethod key-value-list 23,873
+(defmethod show 26,1014
+(defmethod table-filter-with-states29,1163
+(defmethod new-marked 33,1378
+(defmethod remove-those-with-symbols 42,1704
+(defmethod cright-handsides 51,2110
+(defmethod deterministic-p 54,2255
+(defmethod dead-end-state-p 57,2398
+(defmethod union-simple-transitions 60,2570
+(defmethod get-states-from 65,2780
+(defmethod apply-states-mapping 68,2923
+(defmethod epsilon-p 74,3161
+(defmethod epsilon-closure 77,3292
+(defmethod table-apply-signature-mapping 81,3464
+(defmethod uncommutative 84,3629
+(defmethod to-commutative 89,3879
+(defmethod possibly-equivalent-to-state 93,4049
+(defmethod uncommutative-for-equivalence-classes 96,4228
+
+simplification.lisp,205
+(defmethod find-puits-state 3,26
+(defmethod nsimplify-minimal-automaton 11,350
+(defmethod simplify-minimal-automaton 15,518
+(defmethod nsimplify-automaton 19,746
+(defmethod simplify-automaton 38,1360
+
+specification.lisp,1284
+(defvar *loadable* 3,26
+(defvar *spec* 5,51
+(defvar *specs* 6,95
+(defclass specs 8,155
+(defun make-specs 12,257
+(defclass spec 15,305
+(defgeneric add-automaton 31,1133
+(defmethod add-automaton 33,1170
+(defgeneric remove-automaton 36,1283
+(defmethod remove-automaton 38,1323
+(defun remove-tautomaton 41,1430
+(defun add-current-automaton 44,1514
+(defun add-tautomaton 47,1592
+(defun add-current-tautomaton 50,1682
+(defun add-term 53,1763
+(defun add-current-term 56,1850
+(defun add-termset 59,1913
+(defun add-current-termset 62,1990
+(defun add-current-trs 65,2062
+(defun add-trs 68,2122
+(defun fill-spec 71,2204
+(defun make-spec84,2641
+(defun load-spec 94,3015
+(defun read-spec-from-path 102,3287
+(defun load-trs-spec 107,3455
+(defun load-aut-spec 115,3739
+(defun build-spec 123,4023
+(defun write-automata 154,4887
+(defun write-term 162,5075
+(defun write-terms 168,5199
+(defun write-termset 174,5353
+(defun write-termsets 182,5581
+(defun write-trs 188,5744
+(defun write-trss 195,5911
+(defun write-spec 201,6062
+(defun add-spec 216,6458
+(defun write-current-spec 219,6533
+(defun add-current-spec 222,6599
+(defun get-spec 225,6664
+(defun list-specs 228,6722
+(defun set-current-spec 231,6775
+(defun back-up-file 235,6850
+(defun save-spec 241,7010
+
+sstates.lisp,1006
+(defvar *with-bv* 2,25
+(defmethod make-sstates 4,47
+(defmethod make-sstates 9,172
+(defmethod make-sstates 12,251
+(defmethod make-sstates 17,375
+(defmethod make-sstates-from-state 22,489
+(defmethod make-sstates-from-state 25,559
+(defmethod empty-sstates-p 28,647
+(defmethod empty-sstates-p 31,740
+(defmethod empty-sstates-p 34,799
+(defmethod empty-sstates-p 38,890
+(defmethod in-sstates 41,971
+(defmethod in-sstates 44,1073
+(defmethod sstates-adjoin 47,1185
+(defmethod sstates-adjoin 50,1291
+(defmethod sstates-contents 55,1424
+(defmethod sstates-cardinality 58,1505
+(defmethod sstates-cardinality 61,1581
+(defmethod sstates-singleton-p 64,1674
+(defmethod sstates-singleton-p 67,1768
+(defmethod sstates-contents 70,1864
+(defmethod sstates-to-container 76,2022
+(defun print-sstates 79,2096
+(defmethod sstates-to-container 82,2205
+(defmethod sstates-realstate 85,2309
+(defmethod sstates-realstate 88,2381
+(defmethod sstates-difference 90,2433
+(defmethod sstates-difference 93,2568
+
+state.lisp,2964
+(defvar *state-internal-number* 3,26
+(defvar *states-index* 5,62
+(defclass state 7,91
+(defclass indexed-state 9,129
+(defmethod print-object 13,294
+(defmethod compare-object 16,435
+(defmethod make-indexed-state 21,595
+(defmethod index-state 24,714
+(defmethod state 27,796
+(defclass casted-state 31,882
+(defmethod compare-object 38,1160
+(defmethod index-state 41,1239
+(defun sort-casted-states 45,1379
+(defgeneric state-adjoin 48,1477
+(defun state-p 51,1598
+(defun union-sort-casted-states 54,1638
+(defun intersection-sort-casted-states 57,1730
+(defmethod casted-state-adjoin-sort 60,1836
+(defun difference-sort-casted-states 63,1944
+(defun remove-sort-casted-states 67,2094
+(defvar *automaton-states-table* 73,2338
+(defgeneric state 75,2377
+(defun casted-state-p 78,2457
+(defvar *print-states-readably* 81,2511
+(defmethod print-object 86,2684
+(defmethod print-object 92,2912
+(defmethod find-casted-state-from-state 100,3235
+(defun make-empty-automaton-states-table 103,3363
+(defun find-state-in-automaton-states-table 106,3443
+(defun automaton-states-table-count 109,3556
+(defgeneric put-state-in-automaton-states-table 112,3643
+(defmethod put-state-in-automaton-states-table 114,3712
+(defun make-casted-state 117,3855
+(defmethod state-key 120,3935
+(defmethod cast-state 124,4042
+(defmethod cast-state 132,4358
+(defmethod state-member 135,4427
+(defmethod state-member 138,4513
+(defun casted-state-subsetp 142,4652
+(defun state-remove-duplicates 145,4719
+(defun casted-state-remove-duplicates 148,4803
+(defmethod state-adjoin 151,4882
+(defun casted-state-intersection 154,4955
+(defun casted-state-set-difference 157,5032
+(defun casted-state-nset-difference 160,5113
+(defmacro with-states-table 163,5196
+(defclass neutral-state 167,5329
+(defclass final-neutral-state 168,5365
+(defclass ok-state 169,5415
+(defclass ok-ok-state 172,5553
+(defclass puits-state 175,5700
+(defmethod print-object 177,5735
+(defmethod print-object 180,5810
+(defmethod print-object 183,5889
+(defmethod print-object 186,5970
+(defmethod print-object 189,6049
+(defvar *neutral-state-final-p* 192,6135
+(defvar *neutral-state* 193,6172
+(defvar *final-neutral-state* 194,6228
+(defvar *puits-state* 195,6296
+(defvar *ok-state* 196,6348
+(defvar *ok-ok-state* 197,6394
+(defgeneric strictly-ordered-state-p 199,6447
+(defmethod strictly-ordered-state-p 201,6502
+(defmethod strictly-ordered-state-p 202,6571
+(defmethod order-state 208,6783
+(defgeneric state-final-p 213,6948
+(defmethod state-final-p 214,6983
+(defmethod state-final-p 215,7026
+(defmethod state-final-p 216,7073
+(defmethod state-final-p 217,7120
+(defmethod state-final-p 218,7170
+(defmethod state-final-p 219,7228
+(defmethod state-final-p 220,7279
+(defgeneric state-success-p 222,7334
+(defmethod state-success-p 223,7371
+(defmethod state-success-p 224,7416
+(defgeneric state-puits-p 226,7466
+(defmethod state-puits-p 228,7502
+(defmethod state-puits-p 229,7545
+
+states-mapping.lisp,505
+(defvar *states-mapping*)3,26
+(defvar *bijective-mapping* 4,52
+(defun bijective-mapping-p 9,174
+(defgeneric apply-states-mapping 13,339
+(defmethod apply-states-mapping 15,395
+(defmethod apply-states-mapping 20,543
+(defmethod apply-states-mapping 23,589
+(defmethod apply-states-mapping 28,701
+(defmethod apply-states-mapping 35,950
+(defmethod apply-states-mapping 40,1066
+(defmethod apply-states-mapping 43,1187
+(defmethod apply-states-mapping 46,1324
+(defmethod napply-states-mapping 49,1446
+
+states-table.lisp,156
+(defclass cast-transitions-mixin 3,26
+(defmethod nfilter-states-table 6,175
+(defmethod reset-states-table 14,453
+(defun states-from-states-table 17,563
+
+symbol-state.lisp,130
+(defclass named-state 3,26
+(defgeneric make-named-state 6,97
+(defmethod make-named-state 9,209
+(defmethod print-object 12,321
+
+sym-transitions.lisp,974
+(defclass sym-transitions 3,26
+(defmethod make-sym-transitions 5,71
+(defmethod transitions-access 8,194
+(defmethod transition-set 11,334
+(defmethod transition-set 13,426
+(defmethod transitions-list 17,621
+(defmethod number-of-transitions 20,742
+(defmethod apply-states-mapping 23,885
+(defmethod key-value-list 30,1090
+(defmethod show 33,1219
+(defmethod table-filter-with-states36,1356
+(defmethod cright-handsides 40,1537
+(defmethod new-marked 43,1670
+(defmethod uncommutative 46,1817
+(defmethod to-commutative 61,2337
+(defmethod sym-table-apply-signature-mapping 72,2714
+(defmethod table-apply-signature-mapping 87,3158
+(defmethod possibly-equivalent-to-state 92,3372
+(defmethod remove-those-with-symbols 122,4331
+(defmethod transitions-union 132,4704
+(defmethod get-states-from 136,4927
+(defmethod deterministic-p 139,5058
+(defmethod epsilon-p 142,5189
+(defmethod dead-end-state-p 149,5438
+(defmethod uncommutative-for-equivalence-classes 152,5598
+
+target.lisp,1705
+(defmethod make-target 3,26
+(defgeneric target-size 9,169
+(defmethod target-size 11,204
+(defmethod target-size 14,254
+(defmethod target-size 17,314
+(defmethod target-size 20,369
+(defmethod target-empty-p 23,441
+(defmethod target-union 26,509
+(defmethod target-union 29,627
+(defmethod target-union 32,751
+(defmethod target-union 36,910
+(defmethod target-union 39,1020
+(defmethod target-union 42,1130
+(defmethod target-union 45,1204
+(defmethod target-union 48,1270
+(defmethod target-union 51,1336
+(defmethod target-union 54,1440
+(defmethod target-union 57,1529
+(defmethod target-intersection 61,1642
+(defmethod target-intersection 65,1777
+(defmethod target-intersection 68,1895
+(defmethod target-intersection 71,2011
+(defmethod target-intersection 74,2142
+(defmethod target-intersection 77,2273
+(defmethod target-intersection 80,2392
+(defmethod target-intersection 84,2490
+(defmethod target-intersection 88,2608
+(defmethod target-intersection 91,2757
+(defmethod target-intersection 95,2875
+(defmethod target-product 99,2993
+(defmethod target-product 106,3236
+(defmethod target-product 113,3446
+(defmethod target-product 120,3653
+(defmethod targets-product 123,3774
+(defmethod cast-target 126,3870
+(defmethod cast-target 129,3989
+(defmethod cast-target 131,4058
+(defmethod casted-target-p 134,4110
+(defmethod casted-target-p 135,4162
+(defmethod casted-target-p 136,4210
+(defmethod casted-target-p 137,4262
+(defmethod casted-target-p 138,4320
+(defmethod target-deterministic-p 140,4374
+(defmethod target-deterministic-p 144,4466
+(defmethod index-target 147,4556
+(defmethod index-target 153,4741
+(defmethod index-target 159,4910
+(defmethod index-target 162,5005
+
+tautomate.lisp,604
+(defclass tautomata 3,26
+(defun make-tautomata 7,139
+(defclass tautomaton 10,195
+(defun make-tautomaton 14,338
+(defmethod show 24,934
+(defgeneric add-automaton-to-tautomaton 28,1079
+(defmethod add-automaton-to-tautomaton 30,1144
+(defmethod recognized-p 41,1600
+(defgeneric tcompute-target 46,1737
+(defmethod tcompute-target 48,1785
+(defgeneric projection 54,1944
+(defmethod projection 57,2053
+(defmethod op-automata-list 61,2195
+(defmethod min-union-automata 74,2601
+(defmethod min-intersection-automata 77,2729
+(defmethod intersection-automata 80,2871
+(defmethod union-automata 83,2999
+
+termination.lisp,1075
+(defgeneric make-automaton-context 2,25
+(defgeneric inverse-seqsys 5,102
+(defgeneric constant-instances 7,158
+(defgeneric constant-instances-list 9,225
+(defgeneric instances 11,298
+(defgeneric instances-list 13,356
+(defgeneric check-rule-substi-termination 15,421
+(defgeneric check-rule-termination 17,499
+(defgeneric growing-terminating 19,577
+(defgeneric check-rule-growing-termination 21,638
+(defgeneric check-rule-substi-growing-termination 23,719
+(defgeneric inverse-growing-terminating 25,806
+(defmethod inverse-seqsys 28,876
+(defgeneric  make-automaton-context 37,1176
+(defmethod make-automaton-context 40,1320
+(defmethod constant-instances 54,1887
+(defmethod constant-instances-list 60,2132
+(defmethod instances 67,2340
+(defmethod instances-list 73,2529
+(defmethod check-rule-substi-termination 79,2715
+(defmethod check-rule-termination 93,3111
+(defmethod inverse-growing-terminating 110,3752
+(defmethod check-rule-substi-growing-termination 123,4412
+(defmethod check-rule-growing-termination 130,4670
+(defmethod growing-terminating 143,5119
+
+term-rules.lisp,320
+(defgeneric instance-of-any-rule 3,26
+(defgeneric redex-positions-lhs 6,142
+(defgeneric outermost-redex-positions-lhs 9,285
+(defmethod instance-of-any-rule 12,448
+(defmethod instance-of-any-rule 15,552
+(defmethod redex-positions-lhs 18,677
+(defmethod outermost-redex-positions-lhs 22,839
+(defun reduction 25,951
+
+termset.lisp,437
+(defgeneric get-terms 3,26
+(defgeneric (setf 6,85
+(defgeneric  aut-termset 9,199
+(defgeneric termset-merge-signature 13,301
+(defclass termsets 16,424
+(defun make-termsets 20,532
+(defclass termset 23,586
+(defun make-termset 32,799
+(defmethod print-object 39,931
+(defmethod (setf 51,1367
+(defmethod aut-termset 62,1716
+(defmethod termset-merge-signature 72,2004
+(defun ground-termset-p 79,2319
+(defun equiv-termset-p 82,2382
+
+terms.lisp,443
+(defclass terms 3,26
+(defun make-terms 7,128
+(defun redex 10,176
+(defun instance-of-any 15,307
+(defun orthogonal-p 18,392
+(defun normal-form 21,471
+(defun overlapp 28,622
+(defun overlapp-patterns 33,741
+(defun overlapp-subpatterns 40,884
+(defun filter-normal-forms 43,1002
+(defun filter-non-instance-of-strict-subterm 46,1092
+(defun filter-non-redex 49,1212
+(defun instance-of-strict-subterm 52,1289
+(defun equiv-terms-p 55,1401
+
+term-state.lisp,466
+(defgeneric make-term-state 2,25
+(defclass term-state 5,124
+(defmethod make-term-state 9,252
+(defmethod make-casted-term-state 12,373
+(defmethod compare-object 15,478
+(defmethod print-object 20,711
+(defmethod make-term-states 25,922
+(defmethod make-casted-term-states 30,1048
+(defvar *l-name* 35,1172
+(defvar *r-name* 36,1206
+(defvar *l-symbol* 37,1240
+(defvar *r-symbol* 38,1292
+(defun r-state 40,1345
+(defun l-state 43,1419
+(defun var-state 46,1493
+
+term-to-state.lisp,161
+(defmethod show-state-term-table 3,26
+(defmethod term-from-state-term-table 10,245
+(defmethod state-term-table 20,532
+(defmethod term-to-given-state 82,2556
+
+toy.lisp,1382
+(defmethod process-yield 30,1106
+(defmethod show-automaton 32,1136
+(defun display-current-automaton 39,1358
+(defun display-current-tautomaton 46,1576
+(defun display-current-trs 51,1728
+(defun display-term 56,1852
+(defun display-tautomaton 61,2025
+(defun display-current-term 66,2241
+(defun display-current-termset 69,2305
+(defun display-current-spec 74,2450
+(defun set-and-display-current-term 84,2718
+(defun load-term 88,2814
+(defun clear-current-term 93,2944
+(defun set-and-display-current-termset 97,3031
+(defun clear-current-termset 101,3142
+(defun load-termset 107,3251
+(defun sequentiality 114,3425
+(defun trs-fb-to-constructor 142,4171
+(defgeneric set-and-display-current-automaton 152,4578
+(defmethod set-and-display-current-automaton 153,4637
+(defun set-and-display-current-tautomaton 158,4831
+(defun apply-reduction 163,4973
+(defun apply-reduction-nf 191,5911
+(defun clear-current-automaton 234,7165
+(defun clear-current-trs 237,7233
+(defun complementation 240,7289
+(defun complete 244,7419
+(defun minimize 248,7540
+(defun simplify 252,7661
+(defun determinize 256,7782
+(defun my-reduce 260,7909
+(defun set-and-display-current-trs 264,8029
+(defun set-and-display-current-spec 270,8155
+(defun automaton-d 274,8251
+(defun automaton-d-extra 279,8482
+(defun automaton-c 282,8544
+(defun automaton-c-s 290,8768
+(defun automaton-c-a 296,9000
+
+transition.lisp,165
+(defclass transition 3,26
+(defgeneric make-transition 5,59
+(defmethod make-transition 10,231
+(defmethod make-transition 13,346
+(defmethod compare-object 17,494
+
+transitions.lisp,2673
+(defvar *loadable* 2,25
+(defvar *limit-transitions* 9,273
+(defvar *limit-transitions-value* 10,304
+(defun toggle-limit-transitions 12,344
+(defvar *global-transitions*)15,436
+(defmacro with-new-transitions 17,467
+(defvar *transitions-type* 22,651
+(defun state-or-container-p 24,697
+(defgeneric number-of-transitions 27,781
+(defgeneric transitions-access 30,853
+(defgeneric transition-set 33,926
+(defgeneric transitions-access-modc 36,998
+(defgeneric transitions-table 39,1076
+(defclass transitions 41,1122
+(defgeneric remove-those-with-symbols 44,1272
+(defgeneric transitions-list 47,1431
+(defgeneric display-transitions 50,1554
+(defgeneric make-transitions 53,1673
+(defgeneric arg-modc 56,1822
+(defgeneric key-modc 58,1856
+(defgeneric display-transitions-list 60,1890
+(defgeneric add-transition-to-transitions 62,1960
+(defgeneric add-transitions-to-transitions 65,2118
+(defgeneric add-dtransition-to-transitions 68,2251
+(defgeneric key-value-list 71,2411
+(defgeneric make-empty-simple-transitions 74,2510
+(defgeneric cright-handsides 76,2557
+(defgeneric transition-set 78,2602
+(defgeneric get-states-from 80,2652
+(defgeneric get-states-from 83,2754
+(defgeneric nfilter-with-states 86,2852
+(defgeneric table-filter-with-states 90,3020
+(defgeneric table-apply-signature-mapping 91,3090
+(defmethod nfilter-with-states 93,3148
+(defmethod napply-signature-mapping 98,3418
+(defgeneric complete-transitions 103,3575
+(defmethod fill-states-table 106,3722
+(defmethod get-states 116,4171
+(defmethod apply-transition-function 128,4659
+(defmethod transitions-fun 131,4818
+(defmethod transition-function-set 135,4956
+(defmethod arg-modc 138,5115
+(defmethod arg-modc 142,5207
+(defmethod arg-modc 146,5287
+(defmethod key-modc 151,5440
+(defmethod right-handsides 154,5507
+(defmethod display-transitions-list 157,5620
+(defmethod show 163,5787
+(defmethod add-transitions-to-transitions 169,6046
+(defun make-empty-table 174,6300
+(defmethod make-empty-transitions 179,6458
+(defmethod make-transitions 182,6634
+(defmethod add-transition-to-transitions 185,6786
+(defmethod add-transition-to-transitions 187,6887
+(defmethod add-dtransition-to-transitions 197,7471
+(defmethod add-dtransition-to-transitions 200,7625
+(defmethod add-dtransition-to-transitions 204,7883
+(defmethod add-dtransition-to-transitions 206,7974
+(defmethod disjoint-union-transitions-gen 213,8405
+(defmethod right-handsides 224,8782
+(defmethod make-transitions-from-list 227,8883
+(defmethod symbols-from 237,9270
+(defmethod complete-transitions 241,9406
+(defmethod commutative-transitions-p 262,9952
+(defgeneric uncommutative-for-equivalence-classes 267,10124
+
+trs.lisp,315
+(defvar *d-iterations* 3,26
+(defgeneric get-rules 5,53
+(defgeneric (setf 8,133
+(defclass trss 11,230
+(defun make-trss 15,330
+(defclass trs 18,376
+(defmethod symbols-from 24,495
+(defun make-trs 27,566
+(defmethod show 30,675
+(defmethod print-object 33,775
+(defmethod size 36,850
+(defmethod growing 39,905
+
+tuple-state.lisp,125
+(defclass tuple-state 3,26
+(defmethod print-object 6,101
+(defun make-tuple-state 11,263
+(defmethod compare-object 14,341
+
+unify.lisp,270
+(defun instance 3,26
+(defun matching-lhs 11,207
+(defun linear-unify-with-a-term 14,293
+(defun linear-unify-list 23,498
+(defun linear-unify 32,759
+(defun unify-substi-list 50,1267
+(defun unify-substi 62,1651
+(defun unify 74,2027
+(defun unify-with-a-term 77,2077
+
+union.lisp,192
+(defun disjoint-union-automaton-gen 3,26
+(defmethod disjoint-union-automaton 17,651
+(defmethod union-automaton 20,779
+(defmethod union-automaton 23,925
+(defmethod union-automaton 28,1082
+
+utils-interface.lisp,102
+(defun display-current-approximation 3,26
+(defun display-trs 17,463
+(defun display-termset 35,1067
+
+vbits-homomorphisms.lisp,3428
+(defun x1-to-nothing-fun 3,26
+(defmethod x1-to-nothing 9,124
+(defun x1-to-xj-fun 14,300
+(defmethod x1-to-xj 25,552
+(defun toggle-bit 29,704
+(defun xi-to-cxj-fun 33,810
+(defmethod xi-to-cxj 42,1044
+(defun xj-to-cxj-fun 45,1141
+(defmethod xj-to-cxj 53,1351
+(defmethod x1-to-cx1 56,1425
+(defun union-p 60,1556
+(defun intersection-p 63,1601
+(defun union-bin-p 66,1654
+(defun intersection-bin-p 69,1708
+(defun not-bunion-p 72,1776
+(defun bunion-p 77,1890
+(defun bintersection-p 82,2001
+(defun not-bintersection-p 87,2118
+(defun not-bunion-bin-p 92,2240
+(defun bunion-bin-p 95,2308
+(defun bintersection-bin-p 98,2368
+(defun x1-to-bool-xi-fun 102,2504
+(defmethod x1-to-bool-xi 115,2829
+(defmethod x1-to-color-f 119,2997
+(defmethod x1-to-color-f 122,3072
+(defun x1-to-color-h 133,3368
+(defmethod x1-to-color 137,3447
+(defmethod nothing-to-x1-f 141,3629
+(defmethod nothing-to-x1-f 146,3810
+(defmethod nothing-to-x1-f 149,3935
+(defmethod nothing-to-x1-h 152,4022
+(defmethod nothing-to-x1 156,4116
+(defmethod nothing-to-x1 161,4350
+(defmethod nothing-to-random-f 165,4543
+(defmethod nothing-to-random-f 168,4659
+(defmethod nothing-to-random-f 171,4772
+(defmethod nothing-to-random-h 174,4847
+(defmethod nothing-to-random 178,4929
+(defmethod nothing-to-random 183,5056
+(defmethod nothing-to-random-color-f 189,5244
+(defmethod nothing-to-random-color-f 192,5318
+(defmethod nothing-to-random-color-f 195,5437
+(defmethod nothing-to-random-color-h 198,5518
+(defmethod nothing-to-random-color 202,5612
+(defmethod nothing-to-random-color 207,5751
+(defmethod nothing-to-random-partition-f 213,5951
+(defmethod nothing-to-random-partition-f 216,6077
+(defmethod nothing-to-random-partition-f 219,6210
+(defmethod nothing-to-random-partition-h 222,6295
+(defmethod nothing-to-random-partition 226,6397
+(defmethod nothing-to-random-partition 231,6544
+(defmethod nothing-to-color-f 237,6752
+(defmethod nothing-to-color-f 245,7002
+(defmethod nothing-to-color-f 248,7135
+(defmethod nothing-to-color-h 251,7233
+(defmethod nothing-to-color 255,7349
+(defmethod nothing-to-color 260,7521
+(defmethod nothing-to-xj-f 266,7742
+(defmethod nothing-to-xj-f 280,8107
+(defmethod nothing-to-xj-f 290,8398
+(defmethod nothing-to-xj-h 293,8489
+(defmethod nothing-to-xj 297,8591
+(defmethod nothing-to-xj 302,8749
+(defmethod nothing-to-xj1-bool-xj2-f 307,8955
+(defmethod nothing-to-xj1-bool-xj2-f325,9478
+(defmethod nothing-to-xj1-bool-xj2-f 341,9927
+(defmethod nothing-to-xj1-bool-xj2-h 344,10037
+(defmethod nothing-to-xj1-bool-xj2 348,10177
+(defmethod nothing-to-xj1-bool-xj2 355,10381
+(defmethod nothing-to-xj1-union-xj2 360,10565
+(defmethod nothing-to-xj1-intersection-xj2 363,10700
+(defun x1-to-xj1-bool-xj2-f 367,10910
+(defmethod x1-to-xj1-bool-xj2382,11285
+(defmethod x1-to-xj1-union-xj2 386,11416
+(defmethod x1-to-xj1-intersection-xj2 389,11522
+(defun y1-y2-to-xj1-xj2-f 393,11703
+(defmethod y1-y2-to-xj1-xj2407,12059
+(defun y1-y2-to-xj-xj1-bool-xj2-f 412,12237
+(defmethod y1-y2-to-xj-xj1-bool-xj2430,12745
+(defmethod y1-y2-to-xj-xj1-union-xj2 434,12892
+(defmethod y1-y2-to-xj-xj1-intersection-xj2 437,13014
+(defmethod nothing-to-c1-union-c2-f 443,13283
+(defmethod nothing-to-c1-union-c2-f 453,13602
+(defmethod nothing-to-c1-union-c2-f 461,13831
+(defmethod nothing-to-c1-union-c2-h 464,13935
+(defmethod nothing-to-c1-union-c2 468,14063
+(defmethod nothing-to-c1-union-c2 473,14247
+
+vcylindrification.lisp,182
+(defmethod vcylindrification 3,26
+(defmethod vcylindrification 7,122
+(defmethod vcylindrification 16,466
+(defmethod vcylindrification 22,654
+(defmethod vcylindrification 27,804
+
+vhomomorphisme.lisp,64
+(defgeneric vhomomorphism 3,26
+(defmethod vhomomorphism 7,158
+
+vmodification.lisp,110
+(defvar *modification-function*5,47
+(defmethod vmodification-symbols 8,102
+(defmethod vmodification 14,242
+
+vprojection.lisp,102
+(defun vbits-projection 3,26
+(defmethod vprojection 13,301
+(defmethod vprojection-automaton 20,493
+
+test.lisp,0
+
+target-table.lisp,0
+
+state-contents.lisp,0
+
+start-visu.lisp,0
+
+start.lisp,0
+
+new-equivalence-classes.lisp,0
+
+lang-context.lisp,0
+
+det-sans-bv.lisp,0
+
+compute.lisp,0

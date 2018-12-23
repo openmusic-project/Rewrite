@@ -1,0 +1,9 @@
+Ops sel:2 c:2 from:1 s:1 0:0
+Vars x y z
+TRS sel
+sel(0,c(x,y)) -> x
+sel(s(x),c(y,z)) -> sel(x,z)
+from(x) -> c(x,from(s(x)))
+
+Term sel(s(0),from(0))
+

@@ -1,0 +1,7 @@
+Ops a:0 b:0 c:0 d:0 e:0 f:2 g:2
+Vars x
+TRS KM91
+f(g(a,x),b) -> x
+f(g(x,a),c) -> x
+f(d,x) -> x
+g(e,e) -> e

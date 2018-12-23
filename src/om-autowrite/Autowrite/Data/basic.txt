@@ -1,0 +1,19 @@
+Ops f:1 g:1 a:0
+
+Vars x y z 
+
+TRS R
+    f(x) -> g(f(x))
+
+
+Termset init
+    f(a)
+
+
+Termset check1
+    f(g(f(a)))
+    g(f(g(a)))
+
+
+Termset check2
+    g(g(g(g(g(g(g(g(f(a)))))))))

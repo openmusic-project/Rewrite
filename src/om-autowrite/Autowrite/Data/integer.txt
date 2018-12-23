@@ -1,0 +1,38 @@
+Ops 
+; Logical and arithmetic operators
+   cond:3 +:2 -:2 *:2 %:2 =:2 less:2 not:1
+  true:0 false:0
+  0:0 s:1
+Vars x y z
+
+;TRS INT
+
+; addition
+;  +(0,x) -> x
+;  +(s(x),y) -> s(+(x,y))
+; multiplication
+;  *(0,x) -> 0
+;  *(s(x),y) -> +(*(x,y), y)
+
+; less
+;  less(0,0) -> true
+;  less(0,s(x)) -> true
+;  less(s(x),0) -> false
+;  less(s(x),s(y)) -> less(x,y)
+
+; sup
+;  sup(0,0) -> true
+;  sup(0,s(x)) -> false
+;  sup(s(x),0) -> true
+;  sup(s(x),s(y)) -> sup(x,y)
+  
+; equal
+  =(0,0) -> true
+  =(s(0),0) -> false
+  =(0,s(0)) -> false
+  =(s(x),s(y)) -> =(x,y)
+
+; modulo
+  %(0,x) -> 0
+  %(s(x),y) -> if
+  

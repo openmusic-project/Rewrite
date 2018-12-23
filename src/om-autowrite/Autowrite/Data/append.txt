@@ -1,0 +1,17 @@
+Ops app:2 cons:2 nil:0 a:0 b:0
+Vars x y z u
+Termset S
+  app(cons(a, nil),cons(b, cons(b, nil)))
+  a
+  cons(a,nil)
+Automaton A
+States qa qb qla qlb qf
+Final States qf
+Transitions
+a -> qa
+b -> qb
+cons(qa, qla) -> qla
+nil -> qla
+cons(qb, qlb) -> qlb
+nil -> qlb
+app(qla,qlb) -> qf

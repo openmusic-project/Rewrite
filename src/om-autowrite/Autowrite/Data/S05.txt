@@ -1,0 +1,92 @@
+Ops a:0 i:0 b:1 c:1 d:1 e:1 g:1 f:4
+Vars x y z t
+TRS S05
+i -> i
+c(a) -> a
+c(b(x)) -> i
+d(a) -> i
+d(b(x)) -> a
+e(a) -> a
+e(b(x)) -> g(x)
+g(x) -> x
+f(y, a, b(z), x) -> c(x)
+f(b(y), z, a, x) -> d(x)
+f(a, b(y), z, x) -> d(x)
+f(b(y), b(z), b(t), x) -> d(x)
+f(a, a, a, x) -> d(x)
+
+Term f(i,i,i,a)
+Term f(g(i),g(i),g(i),a)
+Term f(e(b(i)),e(b(i)),e( b(i)) @)
+Term f(e(b(@)),e(b(@)),e(b(@)),@)
+
+; strong Jacquemard 2004-may-25
+; aut-c 4 states 279 rules in 16.83s
+; aut-d 29 states 135 rules 1m0.71s
+; f(i,i,i,a) in 1 iteration
+; strong Jacquemard 2009-feb-18
+; aut-d 28 states 135 rules 1m0.71s
+; F in 2009-02-18 1.329s
+
+; strong extra Jacquemard 2009-feb-18
+; aut-c 5 states 550 rules
+; aut-d 98 states 527 rules
+; f(i,i,i,@) 
+
+; nv Jacquemard 
+; aut-c 4 states 152 rules in 7.69s
+; aut-d 34 states 92997 rules in 
+; f(g(i),g(i),g(i),a) in 2 iterations
+; 2004-may-25 G 1m42s
+; 2009-02-18
+; F in 49.8s
+
+; nv extra Jacquemard 2009-feb-18
+; aut-c 5 states 359 rules 
+; aut-d  states  rules in  
+; f(g(i),g(i),g(i),@) in 
+
+; growing  Jacquemard 2004-apr-09
+; aut-c 4 states 84 rules in 0.5s
+; aut-d 39 states 1277720 rules in 81m 27.2s
+; in 5 iterations
+; S6 in 81m 27.7s
+; G in 41m 5s
+; aut-d 39 states 1332160 rules in 
+; in 5 iterations
+; 2009-02-19 in 23mn 7s
+
+; growing extra Jacquemard 25-may-2004
+; aut-c 5 states 169 rules in 4.7s
+; aut-d 68 states 1844351 rules in 
+; f(e(b(i)),e(b(i)),e(b(i)) @)
+; in 3 iterations
+; S6 in 
+; G in 64m 9s
+; 2009-feb-18 F 
+
+; strong Toyama 25-may-2004
+; aut-c-toyama 5 states 653 rules in 27.15s
+; aut-d 8 states 28 rules in 0.04s
+; f(i,i,i,a) in 1 iteration in 27.19s
+; 2009-02-18 in 1.2s
+
+; nv Toyama 25-may-2004	
+; aut-c-toyama 5 states 653 rules in 54.08
+; aut-d 16 states 6608 rules in 4.65s 
+; f(g(i),g(i),g(i),a) in 2 iterations in 58.78s
+; 2009-02-18 in 2.9s
+
+; growing Toyama 25-may-2004
+; aut-c-toyama 5 states 653 rules in 43.45s
+; aut-d 19 states 130418 rules
+; CBN-g in 5 iterations in 2min28.66s
+; 2009-02-18 in 20.4s
+
+; growing extra Toyama 25-may-2004
+; aut-c-toyama 7 states 2440 rules in 11m36.82s
+; aut-d 30 states 130419 rules 58.42s
+; f(e(b(@)),e(b(@)),e(b(@)),@)
+; in 3 iterations in 13mn36.82s
+; 2009-02-18 F in 44.3s
+; 2009-04-22 MP 27s

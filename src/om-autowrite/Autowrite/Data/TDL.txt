@@ -1,0 +1,36 @@
+Ops a:0 b:0 f:2 g:2 h:1
+
+Automaton F2
+States T H G F1 F2
+Final States F2
+Transitions
+a -> T
+b -> T
+f(T,T) -> T
+g(T,T) -> T
+h(T) -> T
+f(T,T) -> F1
+g(H,F1) -> G
+h(T) -> H
+f(T,G) -> F2
+f(F2,T) -> F2
+f(F2,H) -> F2
+f(F2,G) -> F2
+f(F2,F1) -> F2
+f(F2,F2) -> F2
+g(F2,T) -> F2
+g(F2,H) -> F2
+g(F2,G) -> F2
+g(F2,F1) -> F2
+g(F2,F2) -> F2
+f(T,F2) -> F2
+f(H,F2) -> F2
+f(G,F2) -> F2
+f(F1,F2) -> F2
+f(F2,F2) -> F2
+g(T,F2) -> F2
+g(H,F2) -> F2
+g(G,F2) -> F2
+g(F1,F2) -> F2
+g(F2,F2) -> F2
+h(F2) -> F2

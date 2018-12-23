@@ -1,0 +1,13 @@
+Ops a:0 b:0 f:3 g:1
+Vars x
+
+TRS S10
+g(x) -> f(x,x,x)
+f(x,a,b) -> a
+f(b,x,a) -> a
+f(a,b,x) -> b
+
+Term f(g(a),g(a),g(a))
+Term f(o,g(a),g(a))
+Term f(g(a),o,g(a))
+Term f(g(a),g(a),o)

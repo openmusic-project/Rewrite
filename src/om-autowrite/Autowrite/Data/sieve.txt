@@ -1,0 +1,107 @@
+; The following definitions are intended to allow production
+; of lists of prime numbers.  The list of the first i prime
+; numbers is firstn(i; primes()).
+
+Ops 
+; List construction and manipulation operators
+   cons:2 nil:0 first:1 tail:1 firstn:2
+
+; Logical and arithmetic operators
+   cond:3  +:2 -:2 *:2 %:2 equ:2 less:2 not:1
+
+; Operators associated with the prime sieve
+   intlist:1 sieve:2 fact:2 primes:0
+
+; truth_values
+  true:0 false:0
+
+; integers
+  0:0 s:1
+
+Vars i, j, q, r
+
+TRS sieve
+
+; addition
+  +(0,x) -> x
+  +(s(x),y) -> s(+(x,y))
+; multiplication
+  *(0,x) -> 0
+  *(s(x),y) -> +(*(x,y), y)
+
+; less
+  less(0,0) -> true
+  less(0,s(x)) -> true
+  less(s(x),0) -> false
+  less(s(x),s(y)) -> less(x,y)
+
+; less
+  less(0,0) -> true
+  less(0,s(x)) -> true
+  less(s(x),0) -> false
+  less(s(x),s(y)) -> less(x,y)
+  
+; equ
+  equ(0,0) -> true
+  equ(s(0),0) -> false
+  equ(0,s(0)) -> false
+  equ(s(x),s(y)) -> equ(x,y)
+
+; modulo
+  %(0,x) -> 0
+  %(s(x),y) -> if
+  
+
+  
+; first(q) is the first element in the list q.
+; tail(q) is the list of all but the first element in the
+;         list q.
+
+   first(cons(i,q)) -> i
+   tail(cons(i,q)) -> q
+; firstn(i, q) is the list of the first i elements in the
+;              list q.
+
+   firstn(i, q) -> cond(equ(i, 0)
+                          false,
+                          cons(first(q),
+                           firstn(subtract(i,1),tail(q))));
+
+
+; cond is the standard conditional function.
+
+   cond(true,i,j) -> i
+   cond(false, i, j) -> j
+
+   include addint, multint, subint, modint, equint, lessint;
+
+
+; intlist(i) is the infinite list (i i+1 i+2 ...).
+
+   intlist(i) -> cons(i,intlist(+(i, 1)));
+
+
+; The definitions of sieve and fact assume that r is given
+; in increasing order, that r contains all of the prime
+; numbers, and that r contains nothing less than 2.
+
+; sieve(q; r) is the infinite list of those elements of the
+; infinite list q that are not multiples of anything on the
+; infinite list r.
+
+   sieve(cons(i,q); r) -> cond(fact(i, r),
+                            sieve(q, r),
+                            cons(i,sieve(q, r)));
+
+; fact(i, r) is true iff the infinite list r contains a
+; nontrivial factor of i.
+
+   fact(i, cons(j,r)) -> cond(less(i, *(j, j)),
+                           false,
+                           cond(equ(%(i, j), 0),
+                                true,
+                                fact(i, r))),
+; primes() is the infinite list of prime numbers
+; (2 3 5 7 11 13 17 ...).
+
+   primes() -> cons(s(s(0)),sieve(intlist(s(s(s(0)))), primes()))

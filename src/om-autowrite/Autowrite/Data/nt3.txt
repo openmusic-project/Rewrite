@@ -1,0 +1,5 @@
+Ops 0:0 f:1 g:1
+Vars x
+TRS R
+f(f(x)) -> f(x)
+g(0) -> g(f(0))

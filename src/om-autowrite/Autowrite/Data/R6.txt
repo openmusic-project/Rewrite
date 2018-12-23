@@ -1,0 +1,40 @@
+;IC8.15
+;WRS04 R6
+Ops a:0 b:1 f:2 g:2 h:3 i:0
+Vars x y z
+TRS R6
+f(x,a) -> a 
+f(a,b(x)) -> i 
+f(b(x),b(y)) -> i 
+g(a,a) -> i 
+g(b(x),a) -> i 
+g(x,b(y)) -> a
+h(x,a,a) -> i
+h(x,a,b(y)) -> i
+h(x,b(y),a) -> i
+h(x,b(y),b(z)) -> b(g(y,f(x,z)))
+i -> b(i)
+
+Term h(o,i,i)
+
+;14-nov-2004
+;WN(Rg,G,F) = WN(Rg,F) ST in 6.6sec
+;WNo(Rg,G,F) =/= WN(Rg,F) ST in 6.6sec witness h(o,i,i)
+
+;WN(Rnv,G,F) = WN(Rnv,F) ST in 21.86sec
+;WNo(Rnv,G,F) = WN(Rnv,F) ST in 21.7sec 
+
+;aut-c-toyama 4 states 103 rules S6 2.64s
+;aut-d 21 sates 10166 rules S6 2.87
+;in 3 iterations
+;CBNg 
+
+;aut-c-@-toyama 5 states 184 rules S6 in 6.46s
+;aut-d 21 states 10167 rules S6 in 2.97s
+;in iterations
+;in CBN@g 
+
+; strong toyama 14-nov-2004
+; aut-c 5 states 183 rules ST in 1s
+; aut-d 8 states 650 rules ST in 0.15s
+; in CBN-s

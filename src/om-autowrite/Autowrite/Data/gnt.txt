@@ -1,0 +1,10 @@
+Ops a:0 b:0 c:0 d:0 f:3 g:3 p:3 k:1 K:1
+Vars x y z
+TRS R1
+g(x,b,c) -> f(x,x,x)
+p(x,y,b) -> x
+p(x,y,c) -> y
+b -> c
+p(x,y,a) -> k(x)
+k(x) -> p(x,a,b)
+f(x,y,z) -> K(g(a,a,a))

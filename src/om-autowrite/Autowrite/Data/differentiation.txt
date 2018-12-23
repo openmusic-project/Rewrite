@@ -1,0 +1,18 @@
+Ops 0:0 s:1 +:2 *:2 dx:1 vx:0
+Vars x y
+TRS R
+; addition
++(0,x) -> x
++(s(x),y) -> s(+(x,y))
+; product
+*(0,x) -> 0
+*(s(x),y) -> +(*(x,y),y)
+; differentiation
+dx(vx) -> s(0)
+dx(0) -> 0
+dx(s(x)) -> dx(x)
+dx(+(x,y)) -> +(dx(x),dx(y))
+dx(*(x,y)) -> +(*(x,dx(y)),*(dx(x),y))
+
+Term dx(+(*(vx,vx),s(0)))
+

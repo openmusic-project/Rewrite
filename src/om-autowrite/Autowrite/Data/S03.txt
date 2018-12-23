@@ -1,0 +1,29 @@
+; deuxieme exemple d' Hubert Comon
+Ops a:0 f:1 g:1 h:1
+Vars x
+TRS Comon2
+h(h(x)) -> f(g(x))
+g(x) -> h(a)
+f(a) -> f(a)
+
+Term h(h(h(g(g(f(a))))))
+
+; strong Toyama 16-oct-2003
+; aut-c 6 states 20 rules
+; aut-d 13 states 40 rules
+; CBN-s in 5 iterations
+
+; nv = growing Toyama 16-oct-2003
+; aut-c 7 states 23 rules
+; aut-d 22 states 67 rules
+; CBN-g in 6 iterations
+
+; strong Jacquemard 16-oct-2003
+; aut-c 6 states 59 rules
+; aut-d 147 states 5474 rules
+; CBN-s in 4 iterations
+
+; nv = growing Jacquemard 16-oct-2003
+; aut-c 6 states 32 rules
+; aut-d 38 states 243 rules
+; CBN-g in 5 iterations

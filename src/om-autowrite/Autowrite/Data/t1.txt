@@ -1,0 +1,4 @@
+Ops a:0 f:2
+Vars x y
+TRS R
+f(f(y,a),f(y,a)) -> x

@@ -1,0 +1,5 @@
+graph "add_a_b(oplus*(eti(b,0),ren_b_a(add_a_b(oplus*(eti(a,1),eti(b,2))))))" {
+a1 -- b0;
+a2 -- b0;
+a1 -- a2;
+}

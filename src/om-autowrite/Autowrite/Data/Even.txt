@@ -1,0 +1,8 @@
+Ops 0:0 s:1 +:2
+Automaton TOTO
+States odd even
+Final States even
+Transitions
+0 -> even
+s(even) -> odd
+s(odd) -> even

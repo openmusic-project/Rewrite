@@ -2,4 +2,5 @@
 
 Manipulation and rewriting rules applied on rhythm trees
 
-P. Donat-Bouillud, 2013
+P. Donat-Bouillud, A. Ycart 
+2013-2015
